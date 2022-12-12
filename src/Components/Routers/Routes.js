@@ -1,12 +1,11 @@
-import React from 'react';
+import { createBrowserRouter } from "react-router-dom";
+import HomePage from "../Homepage/HomePage";
 
-const Routes = () => {
-    const router =crateb
-    return (
-        <div>
-            
-        </div>
-    );
-};
+const router = createBrowserRouter([
+    {
+        path: "/",
+        element: <HomePage></HomePage>
+    }
+])
 
-export default Routes;
+export default router
