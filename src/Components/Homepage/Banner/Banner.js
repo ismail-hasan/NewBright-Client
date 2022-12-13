@@ -26,18 +26,18 @@ const Banner = () => {
 
     return (
         <div>
-            <div className='grid grid-cols-3 gap-10 px-20'>
+            <div className='grid grid-cols-3 gap-10 px-20 pb-20'>
                 {
                     bannerData.map(Bdata => {
                         const { name, img, dec } = Bdata
                         console.log(Bdata)
                         return (
                             <>
-                                <div className="card w-96 shadow-xl image-full">
-                                    <figure><img src={img} alt={name} /></figure>
-                                    <div className="card-body">
-                                        <h2 className="card-title">{name}</h2>
-                                        <p>{dec}</p>
+                                <div className="relative text-white">
+                                    <img src={img} className="" alt={name} />
+                                    <div className="absolute w-full text-center top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]">
+                                        <h2 className="text-[29px] font-[500] ">{name}</h2>
+                                        <p className='text-lg'>{dec}</p>
 
                                     </div>
                                 </div></>

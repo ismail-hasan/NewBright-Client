@@ -2,12 +2,14 @@ import React from 'react';
 import { AiFillHome } from 'react-icons/ai';
 import { MdLocationOn } from 'react-icons/md';
 import { FaPhoneAlt, FaEnvelope } from 'react-icons/fa';
+import ContactMassage from './ContactMassage';
+
 
 
 const ContactPage = () => {
     return (
-        <div className='px-20 py-20'>
-            <div>
+        <div className=' bg-[#efefef] py-20'>
+            <div className='px-20'>
                 <p className='text-lg italic'>Get In Touch</p>
                 <h1 className='text-[26px] font-semibold'>Lorem Ipsum Dolor Sit Amet Consectetur.</h1>
                 <p className='text-[20px] font-[500]'>Head Office</p>
@@ -29,6 +31,9 @@ const ContactPage = () => {
                         <p className='text-[17px] ml-4'>Pabna Bangladesh</p>
                     </div>
                 </div>
+            </div>
+            <div className='my-40'>
+                <ContactMassage></ContactMassage>
             </div>
         </div>
     );
