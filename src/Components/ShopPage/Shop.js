@@ -9,7 +9,7 @@ const Shop = () => {
     return (
         <div>
             <h1>All  Product Data : {productDatas.length}</h1>
-            <div className='grid grid-cols-4 gap-10'>
+            <div className='grid grid-cols-4 gap-8'>
                 {
                     productDatas.map(productData => {
                         const { img, name, price, seller } = productData
