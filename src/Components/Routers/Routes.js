@@ -4,6 +4,8 @@ import Blog from "../BlogPage/Blog";
 import ContactPage from "../ContactPage/ContactPage";
 import HomePage from "../Homepage/HomePage";
 import Main from "../Layout/Main";
+import LoginPage from "../LoginPage/LoginPage";
+import Register from "../Register/Register";
 import ShopDetails from "../ShopPage/ShopDetails/ShopDetails";
 import ShopPage from "../ShopPage/ShopPage";
 
@@ -31,12 +33,20 @@ const router = createBrowserRouter([
                 element: <ContactPage></ContactPage>
             },
             {
+                path: 'login',
+                element: <LoginPage></LoginPage>
+            },
+            {
+                path: 'register',
+                element: <Register></Register>
+            },
+            {
                 path: 'shop',
                 element: <ShopPage></ShopPage>,
                 loader: () => fetch('http://localhost:5000/products')
             },
             {
-                path: '/ShopDetails/:id',
+                path: '/shop/:id',
                 element: <ShopDetails></ShopDetails>,
                 loader: ({ params }) => fetch(`http://localhost:5000/products/${params.id}`)
             },

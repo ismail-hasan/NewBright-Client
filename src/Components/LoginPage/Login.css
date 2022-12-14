@@ -1,0 +1,13 @@
+.login {
+    background: url("../../assests//login/bg-login.jpg");
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+}
+
+.bgImage {
+    background-image: url('../../assests/login/login.png');
+    background-size: cover;
+    background-position: center;
+    opacity: 1;
+}
