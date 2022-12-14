@@ -1,23 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import ShopRealted from '../ShopRealted/ShopRealted';
 
 const ShopDetails = () => {
     const detailsData = useLoaderData()
     const { name, img, dec, price, category, _id, thumImg } = detailsData
+    const [smallImg, setSmallImg] = useState(thumImg[2])
     console.log(detailsData)
     return (
         <div>
             <div className='my-20 px-20' >
                 <div className='flex justify-between items-center gap-x-14'>
                     <div className='w-[40%]'>
-                        <img src={img} alt="" />
+                        <img src={smallImg} alt="" />
                         <div className='flex justify-between mt-3 overflow-hidden gap-2'>
                             {
                                 thumImg.map(singleImg => {
                                     return (
                                         <>
-                                            <img className='w-[120px]' src={singleImg} alt="images" />
+                                            <img onClick={() => setSmallImg(img)} className='w-[120px]' src={singleImg} alt="images" />
                                         </>
                                     )
                                 })
