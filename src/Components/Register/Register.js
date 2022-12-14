@@ -1,6 +1,12 @@
 import React from 'react';
+import { useForm } from "react-hook-form";
 
 const Register = () => {
+    const { register, handleSubmit } = useForm();
+
+    const handleForm = () => {
+
+    }
     return (
         <div className='bg-red-500 '>
             <div className='flex justify-center items-center h-screen px-20'>
@@ -10,11 +16,11 @@ const Register = () => {
                     <button className="btn btn-active btn-secondary">Button</button>
                 </div>
                 <div className='w-1/2 bg-white py-20 px-10'>
-                    <form className='text-input'>
-                        <input name='name' type="Full Name" placeholder="Type here" />
-                        <input name='name' type="Email Address" placeholder="Type here" />
-                        <input name='name' type="Password" placeholder="Type here" />
-                        <input name='name' type="Phone Number" placeholder="Type here" />
+                    <form  className='text-input'>
+                        <input name='name' type="text" placeholder="Type here" />
+                        <input name='email' type="email" placeholder="Type here" />
+                        <input name='password' type="password" placeholder="Type here" />
+                        <input name='phone' type="Phone" placeholder="Type here" />
                         <button className='text-white py-2 px-5 bg-[tomato]'>Submit</button>
                     </form>
                 </div>
