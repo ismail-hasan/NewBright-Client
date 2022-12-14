@@ -30,6 +30,7 @@ const ContactMassage = () => {
                     <input placeholder='Enter Your Name' type="text" />
                     <input placeholder='Enter Your Email Address' type="email" />
                     <textarea placeholder='Enter Your Messsage' type="text" />
+                    <button className='text-white py-2 px-5 bg-[tomato]'>Submit</button>
                 </form>
             </div>
         </div>
