@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
+import ProductReview from '../ProductReview/ProductReview';
 import ShopRealted from '../ShopRealted/ShopRealted';
 
 const ShopDetails = () => {
     const detailsData = useLoaderData()
     const { name, img, dec, price, category, _id, thumImg } = detailsData
     const [smallImg, setSmallImg] = useState(thumImg[2])
-    console.log(detailsData)
+    console.log(thumImg)
     return (
         <div>
             <div className='my-20 px-20' >
@@ -59,6 +60,7 @@ const ShopDetails = () => {
                 category={category}
                 id={_id}
             ></ShopRealted>
+            <ProductReview></ProductReview>
         </div>
     );
 };
