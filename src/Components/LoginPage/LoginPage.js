@@ -37,7 +37,6 @@ const LoginPage = () => {
                         </div>
                     </form>
 
-
                 </div>
                 <div className='bg-[tomato] text-center text-white bgImage w-[50%] flex justify-center items-center flex-col px-28'>
                     <h1 className='text-4xl  '>Lorem, ipsum dolor sit amet.</h1>

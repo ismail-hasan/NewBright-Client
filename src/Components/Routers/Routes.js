@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import AboutPage from "../AboutPage/AboutPage";
 import BlogDetails from "../BlogDetails/BlogDetails";
 import Blog from "../BlogPage/Blog";
+import CartPage from "../CartPage/CartPage";
 import ContactPage from "../ContactPage/ContactPage";
 import HomePage from "../Homepage/HomePage";
 import Main from "../Layout/Main";
@@ -44,6 +45,11 @@ const router = createBrowserRouter([
             {
                 path: 'register',
                 element: <Register></Register>
+            },
+            {
+                path: 'cart',
+                element: <CartPage></CartPage>,
+                loader: () => fetch('http://localhost:5000/cart')
             },
             {
                 path: 'shop',

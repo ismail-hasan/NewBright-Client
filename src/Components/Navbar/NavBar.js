@@ -22,6 +22,8 @@ const NavBar = () => {
                         <ul className="menu menu-horizontal px-1">
                             <li> <Link to='/'>Home</Link> </li>
                             <li> <Link to='/about'>About</Link> </li>
+                            <li> <Link to='/shop'>Shop</Link> </li>
+                            <li> <Link to='/contact'>Contact</Link> </li>
 
                             {
                                 user?.uid ?
@@ -55,28 +57,30 @@ const NavBar = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="dropdown dropdown-end ">
-                            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                                <div className="w-10 rounded-full">
-                                    <img src="https://placeimg.com/80/80/people" />
+                        {
+                            user?.uid &&
+                            <>
+                                <div className="dropdown dropdown-end ">
+                                    <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                                        <div className="w-10 rounded-full">
+                                            <img src="https://placeimg.com/80/80/people" />
+                                        </div>
+                                    </label>
+                                    <ul tabIndex={0} className="menu menu-compact bg-black dropdown-content mt-3 p-2 shadow rounded-box w-52">
+
+                                        <li>
+                                            <a className="justify-between">
+                                                Profile
+                                                <span className="badge">New</span>
+                                            </a>
+                                        </li>
+                                        <li><a>Settings</a></li>
+                                        <li><button onClick={handleLogout}>Logout</button></li>
+
+                                    </ul>
                                 </div>
-                            </label>
-                            <ul tabIndex={0} className="menu menu-compact bg-black dropdown-content mt-3 p-2 shadow rounded-box w-52">
-                                <li>
-                                    <a className="justify-between">
-                                        Profile
-                                        <span className="badge">New</span>
-                                    </a>
-                                </li>
-                                <li><a>Settings</a></li>
-
-                                {
-                                    user?.uid &&
-                                    <li><button onClick={handleLogout}>Logout</button></li>
-
-                                }
-                            </ul>
-                        </div>
+                            </>
+                        }
                     </div>
                 </div>
             </div>

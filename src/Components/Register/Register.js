@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { authContext } from '../../ContextProvider/ContextProvider';
 
 const Register = () => {
-    const { signUpUser } = useContext(authContext)
+    const { signUpUser, updateUser } = useContext(authContext)
     const { register, handleSubmit } = useForm();
     const navigate = useNavigate()
 
@@ -14,6 +14,13 @@ const Register = () => {
             .then(result => {
                 const user = result.user
                 console.log(user)
+                const clientInfo = {
+                    displayName: data.name
+                }
+                updateUser(clientInfo)
+                    .then(() => { })
+                    .catch(e => console.log(e))
+
                 navigate("/")
             })
             .catch(e => console.log(e))

@@ -1,23 +1,35 @@
-import React, { useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import userEvent from '@testing-library/user-event';
+import React, { useContext, useState } from 'react';
+import { Link, useLoaderData } from 'react-router-dom';
+import { authContext } from '../../../ContextProvider/ContextProvider';
 import ProductReview from '../ProductReview/ProductReview';
 import ShopRealted from '../ShopRealted/ShopRealted';
 
 const ShopDetails = () => {
+    const { user } = useContext(authContext)
+    console.log(user?.email)
     const detailsData = useLoaderData()
     const { name, img, dec, price, category, _id, thumImg } = detailsData
     const [smallImg, setSmallImg] = useState(thumImg[2])
+    const hello = "dhlsdlkfsdfjlskdf"
+    // const [alertMsg, setAlertMsg] = useState(hello)
+    // console.log(alertMsg)
 
     const handleDetailsData = e => {
         e.preventDefault()
-        const perPich = e.target.productNumber.value
+        const productPich = e.target.productNumber.value
         const productSize = e.target.size.value
+        const email = user?.email
+
 
         const cartData = {
             name,
+            email,
             price,
-            perPich,
-            productSize
+            productPich,
+            productSize,
+            img,
+            category
         }
         console.log(cartData)
 
@@ -33,9 +45,18 @@ const ShopDetails = () => {
 
     }
 
+    const handleCheck = (e) => {
+        console.log('done')
+
+        if (!user?.uid) {
+            alert("please login")
+        }
+    }
+
 
     return (
         <div>
+
             <div className='my-20 px-20' >
                 <div className='flex justify-between items-center gap-x-14'>
                     <div className='w-[40%]'>
@@ -76,7 +97,9 @@ const ShopDetails = () => {
                             </div>
                             <div>
                                 <input name='productNumber' type="number" defaultValue="1" className='border py-1 w-[70px] pl-3 rounded-md mr-5' />
-                                <button className='capitalize text-[17px] py-2 px-6 bg-[tomato] text-white rounded-[30px] my-5'>add to cart</button>
+                                {/* <Link to={'/cart'}> */}
+                                <button onClick={handleCheck} className='capitalize text-[17px] py-2 px-6 bg-[tomato] text-white rounded-[30px] my-5'>add to cart</button>
+                                {/* </Link> */}
                             </div>
                             <p>{dec}</p>
                             <h1 className='text-[44px] text-black capitalize font-semibold pt-5'>Prodect Description</h1>
@@ -89,7 +112,7 @@ const ShopDetails = () => {
                 id={_id}
             ></ShopRealted>
             <ProductReview></ProductReview>
-        </div>
+        </div >
     );
 };
 
