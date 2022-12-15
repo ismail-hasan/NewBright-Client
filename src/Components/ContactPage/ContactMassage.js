@@ -15,12 +15,12 @@ const ContactMassage = () => {
                 <p>+880 1776458113</p>
                 <div className=' flex mt-10'>
                     <FaEnvelope className='text-[20px]'></FaEnvelope>
-                    <h1 className='text-[20px] font-[500] ml-4'> Call Us</h1>
+                    <h1 className='text-[20px] font-[500] ml-4'> fnismailhasan@gmail.com</h1>
                 </div>
                 <p>+880 1776458113</p>
                 <div className=' flex mt-10'>
                     <MdLocationOn className='text-[20px]'></MdLocationOn>
-                    <h1 className='text-[20px] font-[500] ml-4'> Call Us</h1>
+                    <h1 className='text-[20px] font-[500] ml-4'> Pabna, Bnagladesh</h1>
                 </div>
                 <p>+880 1776458113</p>
             </div>

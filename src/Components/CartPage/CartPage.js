@@ -4,15 +4,14 @@ import { useLoaderData } from 'react-router-dom';
 const CartPage = () => {
     const cartData = useLoaderData()
     console.log('sdfsd', cartData)
+    const [inputValues, setInputValues] = useState(1)
 
-    const [inputValues, setInputValues] = useState(0)
-    console.log(inputValues)
 
-    const handleNumber = (e) => {
-        const inputValue = e.target.value
-        setInputValues(inputValue)
 
-    }
+
+
+
+
 
     return (
         <div className='m-20'>
@@ -25,6 +24,12 @@ const CartPage = () => {
                     {
                         cartData.map(itemCart => {
                             const { img, name, productSize, productPich, price } = itemCart
+                            // const [inputValues, setInputValues] = useState(1)
+
+                            const handleNumber = (e) => {
+                                const inputValue = e.target.value
+                                setInputValues(inputValue)
+                            }
                             return (
                                 <div className='flex justify-between items-center'>
                                     <div className='flex items-center gap-8'>
@@ -32,7 +37,6 @@ const CartPage = () => {
                                         <div>
                                             <p>{name}</p>
                                             <p>{productSize}</p>
-
                                         </div>
                                     </div>
 

@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { BsHeartFill } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 import { authContext } from '../../ContextProvider/ContextProvider';
 
@@ -34,12 +35,15 @@ const NavBar = () => {
                                     <>
                                         <li> <Link to='/login'>Login</Link> </li>
                                         <li> <Link to='/register'>Register</Link> </li>
+                                        <li> <Link to='/wishlist'>WishList</Link> </li>
                                     </>
                             }
 
                         </ul>
                     </div>
+                    
                     <div className="">
+
                         <div className="dropdown dropdown-end">
                             <label tabIndex={0} className="btn btn-ghost btn-circle">
                                 <div className="indicator">
@@ -47,6 +51,7 @@ const NavBar = () => {
                                     <span className="badge badge-sm indicator-item">8</span>
                                 </div>
                             </label>
+
                             <div tabIndex={0} className="mt-3 card bg-black card-compact dropdown-content w-52 shadow">
                                 <div className="card-body">
                                     <span className="font-bold text-lg">8 Items</span>
