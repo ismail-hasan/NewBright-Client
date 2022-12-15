@@ -30,10 +30,10 @@ const Register = () => {
                 </div>
                 <div className='w-1/2 bg-white py-20 px-10'>
                     <form onSubmit={handleSubmit(handleForm)} className='text-input'>
-                        <input {...register('name')} type="text" placeholder="Type here" />
-                        <input {...register('email')} name='email' type="email" placeholder="Type here" />
-                        <input {...register('password')} name='password' type="password" placeholder="Type here" />
-                        <input {...register('phone')} name='phone' type="Phone" placeholder="Type here" />
+                        <input {...register('name')} type="text" placeholder="UserName" />
+                        <input {...register('email')} name='email' type="email" placeholder="E-Mail Address" />
+                        <input {...register('password')} name='password' type="password" placeholder="Enter Strong Password" />
+                        <input {...register('phone')} name='phone' type="Phone" placeholder="Phone number" />
                         <button className='text-white py-2 px-5 bg-[tomato]'>Submit</button>
                     </form>
                 </div>

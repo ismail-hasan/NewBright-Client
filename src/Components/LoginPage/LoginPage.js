@@ -31,7 +31,7 @@ const LoginPage = () => {
 
                     <form onSubmit={handleSubmit(loginForm)} action="">
                         <input {...register("email")} type="text" placeholder="Type here" className="input w-[60%] input-bordered " />
-                        <input {...register("password")} type="text" placeholder="Type here" className="input w-[60%] input-bordered mt-5" />
+                        <input {...register("password")} type="password" placeholder="Type here" className="input w-[60%] input-bordered mt-5" />
                         <div className='flex justify-start'>
                             <button className='bg-red-500 py-2 rounded text-white mt-5 text-start px-5'>Login</button>
                         </div>
