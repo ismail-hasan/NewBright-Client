@@ -2,10 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { AiFillEye } from 'react-icons/ai';
 import { BsHeartFill } from 'react-icons/bs';
 import { FaCartArrowDown } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
 
 const ShopRealted = ({ category, id }) => {
-    console.log('data', category)
     const [relatedDatas, setRelatedDatas] = useState([])
 
     useEffect(() => {

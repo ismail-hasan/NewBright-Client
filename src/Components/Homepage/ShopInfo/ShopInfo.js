@@ -47,20 +47,18 @@ const ShopInfo = () => {
         },
     ]
 
-    console.log('new', infoData)
-
     return (
         <div className='grid grid-cols-6 gap-8 px-20 mt-16'>
             {
                 infoData.map(info => {
                     const { img, name, bgc } = info
                     return (
-                        <>
+                        <div key={info.id}>
                             <div className='border border-[#ccccccab] px-[10px] py-[20px] rounded-[5px] text-center'>
                                 <img src={img} alt="" />
                                 <h1 className={`${bgc} text-lg rounded-md py-[3px] text-white mt-3`}>{name}</h1>
                             </div>
-                        </>
+                        </div>
                     )
                 })
             }

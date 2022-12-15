@@ -32,7 +32,7 @@ const Banner = () => {
                         const { name, img, dec } = Bdata
                         console.log(Bdata)
                         return (
-                            <>
+                            <div key={Bdata.id}>
                                 <div className="relative text-white">
                                     <img src={img} className="" alt={name} />
                                     <div className="absolute w-full text-center top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]">
@@ -40,7 +40,8 @@ const Banner = () => {
                                         <p className='text-lg'>{dec}</p>
 
                                     </div>
-                                </div></>
+                                </div>
+                            </div>
                         )
                     })
                 }

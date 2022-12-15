@@ -7,7 +7,6 @@ const ShopDetails = () => {
     const detailsData = useLoaderData()
     const { name, img, dec, price, category, _id, thumImg } = detailsData
     const [smallImg, setSmallImg] = useState(thumImg[2])
-    console.log(thumImg)
 
     const handleDetailsData = e => {
         e.preventDefault()
@@ -43,11 +42,11 @@ const ShopDetails = () => {
                         <img src={smallImg} alt="" />
                         <div className='flex justify-between mt-3 overflow-hidden gap-2'>
                             {
-                                thumImg.map(singleImg => {
+                                thumImg.map((singleImg, idx) => {
                                     return (
-                                        <>
+                                        <div key={idx}>
                                             <img onClick={() => setSmallImg(img)} className='w-[120px]' src={singleImg} alt="images" />
-                                        </>
+                                        </div>
                                     )
                                 })
                             }
