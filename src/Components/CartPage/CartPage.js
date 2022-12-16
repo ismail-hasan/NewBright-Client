@@ -1,16 +1,18 @@
-import React, { useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
+import React, { useContext, useState } from 'react';
+import { authContext } from '../../ContextProvider/ContextProvider';
 
 const CartPage = () => {
-    const cartData = useLoaderData()
-    console.log('sdfsd', cartData)
-    const [inputValues, setInputValues] = useState(1)
+    const { user } = useContext(authContext)
 
-
-
-
-
-
+    const { data: cartData = [] } = useQuery({
+        queryKey: [user?.user],
+        queryFn: async () => {
+            const res = await fetch(`http://localhost:5000/cart?email=${user?.email}`)
+            const data = await res.json()
+            return data
+        }
+    })
 
 
     return (
@@ -24,14 +26,9 @@ const CartPage = () => {
                     {
                         cartData.map(itemCart => {
                             const { img, name, productSize, productPich, price } = itemCart
-                            // const [inputValues, setInputValues] = useState(1)
 
-                            const handleNumber = (e) => {
-                                const inputValue = e.target.value
-                                setInputValues(inputValue)
-                            }
                             return (
-                                <div className='flex justify-between items-center'>
+                                <div key={itemCart._id} className='flex justify-between items-center'>
                                     <div className='flex items-center gap-8'>
                                         <img className='w-[120px]' src={img} alt="" />
                                         <div>
@@ -41,13 +38,13 @@ const CartPage = () => {
                                     </div>
 
                                     <div>
-                                        <input name='productNumbers' onChange={handleNumber} type="number" defaultValue={productPich} />
+                                        <input name='productNumbers' type="number" defaultValue={productPich} />
                                     </div>
                                     <div>
                                         <h1>$ {price}</h1>
                                     </div>
                                     <div>
-                                        <h1>$ {`${inputValues * price}`}</h1>
+                                        <h1>$ 56756</h1>
                                     </div>
 
                                 </div>

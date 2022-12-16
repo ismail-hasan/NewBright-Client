@@ -29,19 +29,18 @@ const NavBar = () => {
                             {
                                 user?.uid ?
                                     <>
-
+                                        <li> <Link to='/wishlist'>WishList</Link> </li>
                                     </>
                                     :
                                     <>
                                         <li> <Link to='/login'>Login</Link> </li>
                                         <li> <Link to='/register'>Register</Link> </li>
-                                        <li> <Link to='/wishlist'>WishList</Link> </li>
                                     </>
                             }
 
                         </ul>
                     </div>
-                    
+
                     <div className="">
 
                         <div className="dropdown dropdown-end">

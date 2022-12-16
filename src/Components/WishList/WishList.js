@@ -1,3 +1,4 @@
+import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import { AiFillEye } from 'react-icons/ai';
 import { BsHeartFill } from 'react-icons/bs';
@@ -6,6 +7,16 @@ import { Link, useLoaderData } from 'react-router-dom';
 
 const WishList = () => {
     const wishListData = useLoaderData()
+
+
+    // const { wishListData } = useQuery({
+    //     queryKey: [""],
+    //     queryFn: () => fetch()
+    // })
+
+
+
+
 
     return (
         <div className='p-20'>
@@ -42,9 +53,11 @@ const WishList = () => {
                                         </div>
                                         <div className='flex justify-between items-center'>
                                             <p className='text-[tomato] text-[24px] font-semibold'>$ {price}</p>
-                                            <div className='border border-[#d2d2d2] p-3 hover:bg-[tomato] hover:text-[#fff] cursor-pointer transition-[3s] rounded-full'>
-                                                <p> <FaCartArrowDown></FaCartArrowDown> </p>
-                                            </div>
+                                            <Link to="/cart">
+                                                <div className='border border-[#d2d2d2] p-3 hover:bg-[tomato] hover:text-[#fff] cursor-pointer transition-[3s] rounded-full'>
+                                                    <p> <FaCartArrowDown></FaCartArrowDown> </p>
+                                                </div>
+                                            </Link>
                                         </div>
                                     </div>
                                 </div>

@@ -97,9 +97,10 @@ const ShopDetails = () => {
                             </div>
                             <div>
                                 <input name='productNumber' type="number" defaultValue="1" className='border py-1 w-[70px] pl-3 rounded-md mr-5' />
-                                {/* <Link to={'/cart'}> */}
                                 <button onClick={handleCheck} className='capitalize text-[17px] py-2 px-6 bg-[tomato] text-white rounded-[30px] my-5'>add to cart</button>
-                                {/* </Link> */}
+                                <Link to={'/cart'}>
+                                    <button onClick={handleCheck} className='capitalize text-[17px] py-2 px-6 bg-[tomato] text-white rounded-[30px] my-5'>View Cart</button>
+                                </Link>
                             </div>
                             <p>{dec}</p>
                             <h1 className='text-[44px] text-black capitalize font-semibold pt-5'>Prodect Description</h1>

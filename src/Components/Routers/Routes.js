@@ -11,6 +11,7 @@ import Register from "../Register/Register";
 import ShopDetails from "../ShopPage/ShopDetails/ShopDetails";
 import ShopPage from "../ShopPage/ShopPage";
 import WishList from "../WishList/WishList";
+import PrivetRouter from "./PrivetRouter";
 
 const router = createBrowserRouter([
     {
@@ -49,13 +50,12 @@ const router = createBrowserRouter([
             },
             {
                 path: 'wishlist',
-                element: <WishList></WishList>,
-                loader: () => fetch('http://localhost:5000/wishlist')
+                element: <PrivetRouter><WishList></WishList></PrivetRouter>,
+                loader: () => fetch('http://localhost:5000/wishlists')
             },
             {
                 path: 'cart',
-                element: <CartPage></CartPage>,
-                loader: () => fetch('http://localhost:5000/cart')
+                element: <PrivetRouter><CartPage></CartPage></PrivetRouter>,
             },
             {
                 path: 'shop',

@@ -1,25 +1,36 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { FaCartArrowDown } from 'react-icons/fa';
 import { Link, useLoaderData } from 'react-router-dom';
 import { AiFillEye } from 'react-icons/ai';
 import { BsHeartFill } from 'react-icons/bs';
 
 import './Shop.css'
+import { authContext } from '../../ContextProvider/ContextProvider';
 
 
 
 
 const Shop = () => {
     const productDatas = useLoaderData()
+    const { user } = useContext(authContext)
+    console.log("dfsd", user)
 
 
     const handleHeart = (id) => {
-        fetch(`http://localhost:5000/wishlist/${id}`, {
+        fetch(`http://localhost:5000/wishlists/${id}`, {
             method: "PUT",
         })
             .then(res => res.json())
             .then(data => console.log(data))
     }
+    // const handleWishlist = (id) => {
+    //     fetch(`http://localhost:5000/wishlists/${id}`, {
+    //         method: "POST",
+    //         body:
+    //     })
+    //         .then(res => res.json())
+    //         .then(data => console.log(data))
+    // }
 
 
 

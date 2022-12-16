@@ -5,18 +5,23 @@ import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWith
 export const authContext = createContext()
 const ContextProvider = ({ children }) => {
     const [user, setUser] = useState(null)
+    const [loading, setLoading] = useState(true)
+
 
     const Auth = getAuth(app)
 
 
     const signUpUser = (email, password) => {
+        setLoading(false)
         return createUserWithEmailAndPassword(Auth, email, password)
     }
     const logInUser = (email, password) => {
+        setLoading(false)
         return signInWithEmailAndPassword(Auth, email, password)
     }
 
     const logOut = () => {
+        setLoading(false)
         return signOut(Auth)
     }
 
@@ -26,6 +31,7 @@ const ContextProvider = ({ children }) => {
         const unsubscribe = onAuthStateChanged(Auth, currentUser => {
             console.log('current User is', currentUser)
             setUser(currentUser)
+            setLoading(false)
         })
 
         return () => unsubscribe()
@@ -40,7 +46,8 @@ const ContextProvider = ({ children }) => {
         signUpUser,
         logInUser,
         updateUser,
-        logOut
+        logOut,
+        loading
     }
     return (
 
