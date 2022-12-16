@@ -13,12 +13,22 @@ import { authContext } from '../../ContextProvider/ContextProvider';
 const Shop = () => {
     const productDatas = useLoaderData()
     const { user } = useContext(authContext)
-    console.log("dfsd", user)
+    const email = user?.email
+
+    const hello = {
+        email
+    }
+    console.log(hello)
+
 
 
     const handleHeart = (id) => {
         fetch(`http://localhost:5000/wishlists/${id}`, {
             method: "PUT",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(hello)
         })
             .then(res => res.json())
             .then(data => console.log(data))
