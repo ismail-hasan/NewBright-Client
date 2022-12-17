@@ -4,13 +4,12 @@ import { authContext } from '../../../ContextProvider/ContextProvider';
 import ProductReview from '../ProductReview/ProductReview';
 import ShopRealted from '../ShopRealted/ShopRealted';
 import { FaStar, FaStarHalfAlt } from 'react-icons/fa';
-import { AiOutlineStar } from 'react-icons/ai';
+import { toast } from 'react-hot-toast';
 
 const ShopDetails = () => {
     const { user } = useContext(authContext)
     const detailsData = useLoaderData()
-    const { name, dec, price, productImg, ratings, ratingsCount, category, authorImg, _id } = detailsData
-    console.log("prouduct", detailsData)
+    const { name, dec, price, productImg, stock, ratings, ratingsCount, category, authorImg, _id } = detailsData
 
     const [smallImg, setSmallImg] = useState(authorImg[2])
 
@@ -57,7 +56,6 @@ const ShopDetails = () => {
 
     const ratingStart = Array.from({ length: 5 }, (elem, index) => {
         let number = index + 0.5
-        debugger
         return (
             <span key={index} className='mb-3'>
                 {
@@ -70,6 +68,13 @@ const ShopDetails = () => {
             </span>
         )
     })
+
+    const handleNumber = (e) => {
+        let inputNumber = e.target.value
+        if (inputNumber == stock) {
+            toast.error("over the stock")
+        }
+    }
 
 
     return (
@@ -119,7 +124,8 @@ const ShopDetails = () => {
                                 <div className='w-[23px] h-[23px] bg-green-500 rounded-full mr-4'></div>
                             </div>
                             <div>
-                                <input name='productNumber' type="number" defaultValue="1" className='border py-1 w-[70px] pl-3 rounded-md mr-5' />
+
+                                <input onClick={handleNumber} max={stock} min={1} name='productNumber' type="number" defaultValue="1" className='border py-1 w-[70px] pl-3 rounded-md mr-5' />
                                 <button onClick={handleCheck} className='capitalize text-[17px] py-2 pt-3 px-6 bg-[tomato] text-white rounded-[30px] mr-4'>add to cart</button>
                                 <Link to={'/cart'}>
                                     <button onClick={handleCheck} className='capitalize text-[17px] pt-3 py-2 px-6 bg-[tomato] text-white rounded-[30px]'>View Cart</button>
