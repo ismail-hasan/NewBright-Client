@@ -27,60 +27,19 @@ const CartPage = () => {
             })
     }
 
+    const totalPrice = cartData.reduce((prev, cur) => {
+        return prev + cur.price
+    }, 0
+    )
 
-    // return (
-    // <div className='m-20'>
-    //     {/* <div className='flex justify-between text-black'>
-    //         <h1 className='text-3xl  text-black'>Shipping Cart</h1>
-    //         <h1 className='text-3xl  text-black'>{cartData.length} Itesms</h1>
-    //     </div> */}
-    //     <div className='flex justify-between'>
-    //         <div className='w-[60%]'>
-    //             {
-    //                 cartData.map(itemCart => {
-    //                     const { img, name, productSize, productPich, price } = itemCart
-
-    //                     return (
-    //                         <div key={itemCart._id} className='flex justify-between items-center'>
-    //                             <div className='flex items-center gap-8'>
-    //                                 <img className='w-[120px]' src={img} alt="" />
-    //                                 <div>
-    //                                     <p>{name}</p>
-    //                                     <p>{productSize}</p>
-    //                                 </div>
-    //                             </div>
-
-    //                             <div>
-    //                                 <input name='productNumbers' type="number" defaultValue={productPich} />
-    //                             </div>
-    //                             <div>
-    //                                 <h1>$ {price}</h1>
-    //                             </div>
-    //                             <div>
-    //                                 <h1>$ 56756</h1>
-    //                             </div>
-
-    //                         </div>
-    //                     )
-    //                 })
-    //             }
-    //         </div>
-    //         <div className='w-[35%]'>
-    //             <h1>Order Summery</h1>
-    //         </div>
-    //     </div>
-    // </div>
-
-    // );
 
     return (
-        <div className='p-20 flex gap-10 bg-[#d2d2d2]'>
+        <div className='p-20 flex gap-10 bg-[#e9e9e9]'>
             <div className='w-[65%]'>
                 <div className="overflow-x-auto w-full">
                     <table className="table w-full">
                         <thead>
                             <tr>
-
                                 <th>Name</th>
                                 <th>Price</th>
                                 <th>Sub Total</th>
@@ -127,15 +86,12 @@ const CartPage = () => {
             </div>
             <div className='w-[30%]'>
                 <h1 className='text-black text-3xl font-semibold'>Order Summery </h1>
-                <div className='flex justify-between mt-2'>
+                <div className='flex justify-between mt-2 mb-4'>
                     <p>item {cartData.length}</p>
-                    {
-                        // cartData.map(price => <p>{price.price}</p>)
-                        cartData.filter(productPrice => <p>{productPrice.price}</p>)
-                    }
-                    {/* <p>item ${cartItem.price}</p> */}
-                    <hr />
+                    <p>all total: {totalPrice * cartData.length}</p>
                 </div>
+                <p className='text-lg text-black pb-1'>PROMO CODE</p>
+                <input className='border-none px-5 py-1 outline-none' type="text" />
             </div>
         </div>
     )
