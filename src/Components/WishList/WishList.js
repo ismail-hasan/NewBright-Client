@@ -1,25 +1,51 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+import React, { useContext } from 'react';
+import { toast } from 'react-hot-toast';
 import { AiFillEye } from 'react-icons/ai';
-import { BsHeartFill } from 'react-icons/bs';
+import { AiTwotoneDelete } from 'react-icons/ai';
 import { FaCartArrowDown } from 'react-icons/fa';
-import { Link, useLoaderData } from 'react-router-dom';
+import { Link, } from 'react-router-dom';
+import { authContext } from '../../ContextProvider/ContextProvider';
 
 const WishList = () => {
-    const wishListData = useLoaderData()
+    const { user } = useContext(authContext)
 
 
-    // const { wishListData } = useQuery({
-    //     queryKey: [""],
-    //     queryFn: () => fetch()
-    // })
+    const { data: wishListData = [], refetch } = useQuery({
+        queryKey: [user?.email],
+        queryFn: async () => {
+            const res = await fetch(`http://localhost:5000/wishlists?email=${user?.email}`)
+            const data = await res.json()
+            return data
+        }
+    })
 
 
+    const handleDelete = (id) => {
 
+        fetch(`http://localhost:5000/deletewish/${id}`, {
+            method: "DELETE"
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.deletedCount > 0) {
+                    console.log(data)
+                    toast.success('One Item Delete')
+                    refetch()
+                }
+            })
+
+
+    }
 
 
     return (
         <div className='p-20'>
+            {
+                !wishListData.length &&
+                <h1 h1 className='text-3xl capitalize font-[500] text-center h-[50vh] flex items-center justify-center'>no data available</h1>
+            }
+
             <div className='grid grid-cols-4 gap-8'>
                 {
                     wishListData.map(productData => {
@@ -34,9 +60,9 @@ const WishList = () => {
                                                 <AiFillEye className='text-[23px] icon'></AiFillEye>
                                             </div>
 
-                                            {/* <div className='image-icon' onClick={() => handleHeart(_id)}>
-                                                <BsHeartFill className='text-[23px] icon'></BsHeartFill>
-                                            </div> */}
+                                            <div className='image-icon' onClick={() => handleDelete(_id)}>
+                                                <AiTwotoneDelete className='text-[23px] icon'></AiTwotoneDelete>
+                                            </div>
 
                                             <Link to={`/shop/${_id}`}>
                                                 <div className='image-icon'>
@@ -66,7 +92,7 @@ const WishList = () => {
                     })
                 }
             </div>
-        </div>
+        </div >
     );
 };
 

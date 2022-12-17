@@ -6,7 +6,7 @@ import { BsHeartFill } from 'react-icons/bs';
 
 import './Shop.css'
 import { authContext } from '../../ContextProvider/ContextProvider';
-
+import { toast } from 'react-hot-toast';
 
 
 
@@ -31,7 +31,15 @@ const Shop = () => {
             body: JSON.stringify(hello)
         })
             .then(res => res.json())
-            .then(data => console.log(data))
+            .then(data => {
+                if (data.acknowledged) {
+                    toast.success('WishList item Added')
+                }
+                else {
+                    toast.error('Allready Item Added')
+                }
+                console.log(data)
+            })
     }
     // const handleWishlist = (id) => {
     //     fetch(`http://localhost:5000/wishlists/${id}`, {
@@ -42,7 +50,9 @@ const Shop = () => {
     //         .then(data => console.log(data))
     // }
 
-
+    const check = () => {
+        toast.success("added")
+    }
 
     return (
         <div>
@@ -58,7 +68,7 @@ const Shop = () => {
                                         <img src={img} alt={name} className='w-full' />
                                         <div className='text-overly z-10 flex justify-center items-center flex-col gap-7'>
                                             <div className='image-icon'>
-                                                <AiFillEye className='text-[23px] icon'></AiFillEye>
+                                                <AiFillEye onClick={check} className='text-[23px] icon'></AiFillEye>
                                             </div>
 
                                             <div className='image-icon' onClick={() => handleHeart(_id)}>
