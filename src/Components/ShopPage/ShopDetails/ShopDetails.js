@@ -1,4 +1,3 @@
-import userEvent from '@testing-library/user-event';
 import React, { useContext, useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { authContext } from '../../../ContextProvider/ContextProvider';
@@ -7,13 +6,13 @@ import ShopRealted from '../ShopRealted/ShopRealted';
 
 const ShopDetails = () => {
     const { user } = useContext(authContext)
-    console.log(user?.email)
     const detailsData = useLoaderData()
-    const { name, img, dec, price, category, _id, thumImg } = detailsData
-    const [smallImg, setSmallImg] = useState(thumImg[2])
-    const hello = "dhlsdlkfsdfjlskdf"
-    // const [alertMsg, setAlertMsg] = useState(hello)
-    // console.log(alertMsg)
+    const { name, dec, price, productImg, category, authorImg, _id } = detailsData
+
+
+    const [smallImg, setSmallImg] = useState(authorImg[2])
+
+
 
     const handleDetailsData = e => {
         e.preventDefault()
@@ -28,10 +27,9 @@ const ShopDetails = () => {
             price,
             productPich,
             productSize,
-            img,
+            productImg,
             category
         }
-        console.log(cartData)
 
         fetch("http://localhost:5000/cart", {
             method: "POST",
@@ -60,13 +58,13 @@ const ShopDetails = () => {
             <div className='my-20 px-20' >
                 <div className='flex justify-between items-center gap-x-14'>
                     <div className='w-[40%]'>
-                        <img src={smallImg} alt="" />
+                        <img src={smallImg.img1} alt="mainImg" />
                         <div className='flex justify-between mt-3 overflow-hidden gap-2'>
                             {
-                                thumImg.map((singleImg, idx) => {
+                                authorImg.map((singleImg, idx) => {
                                     return (
                                         <div key={idx}>
-                                            <img onClick={() => setSmallImg(img)} className='w-[120px]' src={singleImg} alt="images" />
+                                            <img className='w-[120px]' onClick={() => setSmallImg(singleImg)} src={singleImg.img1} alt="images" />
                                         </div>
                                     )
                                 })
@@ -87,7 +85,7 @@ const ShopDetails = () => {
 
                                 {/* warning  */}
                             </select>
-                            <div className='flex mt-2 items-center'>
+                            <div className='flex mt-2 items-center mb-5'>
                                 <div>
                                     <p className='text-[20px] mr-5'>color: </p>
                                 </div>
@@ -97,9 +95,9 @@ const ShopDetails = () => {
                             </div>
                             <div>
                                 <input name='productNumber' type="number" defaultValue="1" className='border py-1 w-[70px] pl-3 rounded-md mr-5' />
-                                <button onClick={handleCheck} className='capitalize text-[17px] py-2 px-6 bg-[tomato] text-white rounded-[30px] my-5'>add to cart</button>
+                                <button onClick={handleCheck} className='capitalize text-[17px] py-2 pt-3 px-6 bg-[tomato] text-white rounded-[30px] mr-4'>add to cart</button>
                                 <Link to={'/cart'}>
-                                    <button onClick={handleCheck} className='capitalize text-[17px] py-2 px-6 bg-[tomato] text-white rounded-[30px] my-5'>View Cart</button>
+                                    <button onClick={handleCheck} className='capitalize text-[17px] pt-3 py-2 px-6 bg-[tomato] text-white rounded-[30px]'>View Cart</button>
                                 </Link>
                             </div>
                             <p>{dec}</p>

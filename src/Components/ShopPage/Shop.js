@@ -60,12 +60,12 @@ const Shop = () => {
             <div className='grid grid-cols-4 gap-8'>
                 {
                     productDatas.map(productData => {
-                        const { img, name, price, seller, _id } = productData
+                        const { productImg, name, price, seller, _id } = productData
                         return (
                             <div key={productData._id}>
                                 <div className='border border-[#e6e6e6] '>
                                     <div className='text-img'>
-                                        <img src={img} alt={name} className='w-full' />
+                                        <img src={productImg} alt={name} className='w-full' />
                                         <div className='text-overly z-10 flex justify-center items-center flex-col gap-7'>
                                             <div className='image-icon'>
                                                 <AiFillEye onClick={check} className='text-[23px] icon'></AiFillEye>
