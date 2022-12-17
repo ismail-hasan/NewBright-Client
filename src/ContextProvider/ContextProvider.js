@@ -1,6 +1,8 @@
 import React, { createContext, useEffect, useState } from 'react';
 import app from '../FireBase/FireBase.init';
 import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile } from 'firebase/auth';
+import { AiOutlineStar } from 'react-icons/ai';
+import { FaStar, FaStarHalfAlt } from 'react-icons/fa';
 
 export const authContext = createContext()
 const ContextProvider = ({ children }) => {
@@ -40,6 +42,28 @@ const ContextProvider = ({ children }) => {
     const updateUser = (clientInfo) => {
         return updateProfile(Auth.currentUser, clientInfo)
     }
+    //////////////////////////
+
+
+    // const reivewsStart = (ratings) => {
+    //      Array.from({ length: 5 }, (elem, index) => {
+    //         let number = index + 0.5
+    //         return (
+    //             <span className='mb-3'>
+    //                 {
+    //                     ratings >= index + 1 ? <FaStar className='mr-1 text-lg' ></FaStar>
+    //                         :
+    //                         ratings >= number ? <FaStarHalfAlt className='mr-1 text-lg' ></FaStarHalfAlt>
+    //                             :
+    //                             <AiOutlineStar className='mr-1 text-lg' ></AiOutlineStar>
+    //                 }
+    //             </span>
+    //         )
+    //     })
+    // }
+
+
+    //////////////////////////
 
     const userInfo = {
         user,
@@ -47,7 +71,7 @@ const ContextProvider = ({ children }) => {
         logInUser,
         updateUser,
         logOut,
-        loading
+        loading,
     }
     return (
 

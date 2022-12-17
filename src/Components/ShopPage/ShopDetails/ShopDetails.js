@@ -3,15 +3,16 @@ import { Link, useLoaderData } from 'react-router-dom';
 import { authContext } from '../../../ContextProvider/ContextProvider';
 import ProductReview from '../ProductReview/ProductReview';
 import ShopRealted from '../ShopRealted/ShopRealted';
+import { FaStar, FaStarHalfAlt } from 'react-icons/fa';
+import { AiOutlineStar } from 'react-icons/ai';
 
 const ShopDetails = () => {
     const { user } = useContext(authContext)
     const detailsData = useLoaderData()
-    const { name, dec, price, productImg, category, authorImg, _id } = detailsData
-
+    const { name, dec, price, productImg, ratings, ratingsCount, category, authorImg, _id } = detailsData
+    console.log("prouduct", detailsData)
 
     const [smallImg, setSmallImg] = useState(authorImg[2])
-
 
 
     const handleDetailsData = e => {
@@ -43,6 +44,8 @@ const ShopDetails = () => {
 
     }
 
+
+
     const handleCheck = (e) => {
         console.log('done')
 
@@ -52,9 +55,25 @@ const ShopDetails = () => {
     }
 
 
+    const ratingStart = Array.from({ length: 5 }, (elem, index) => {
+        let number = index + 0.5
+        debugger
+        return (
+            <span key={index} className='mb-3'>
+                {
+                    ratings >= index + 1 ? <FaStar className='mr-[2px] text-[17px] text-yellow-400' ></FaStar>
+                        :
+                        ratings >= number ? <FaStarHalfAlt className='mr-[2px] text-[17px]  text-red-500 ' ></FaStarHalfAlt>
+                            :
+                            <FaStar className='mr-[2px] text-[17px] text-[#c0c0c0]' ></FaStar>
+                }
+            </span>
+        )
+    })
+
+
     return (
         <div>
-
             <div className='my-20 px-20' >
                 <div className='flex justify-between items-center gap-x-14'>
                     <div className='w-[40%]'>
@@ -73,6 +92,12 @@ const ShopDetails = () => {
                     </div>
                     <div className='w-[50%]'>
                         <form onSubmit={handleDetailsData} action="">
+
+                            <p className='flex'>
+                                <span className='mr-6 flex'> {ratingStart}</span>
+                                <span className='mr-6'>{ratingsCount} Reviews</span>
+                                <span className='mr-6'>Write A Review</span>
+                            </p>
                             <h1 className='text-[44px] text-black capitalize font-semibold'>{name}</h1>
                             <h1 className='text-[38px] text-[tomato] font-semibold'>$ {price}</h1>
                             <select name='size' className="select w-[30%] input-bordered mb-5">
