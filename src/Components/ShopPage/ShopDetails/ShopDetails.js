@@ -5,13 +5,14 @@ import ProductReview from '../ProductReview/ProductReview';
 import ShopRealted from '../ShopRealted/ShopRealted';
 import { FaStar, FaStarHalfAlt } from 'react-icons/fa';
 import { toast } from 'react-hot-toast';
+import { useQuery } from '@tanstack/react-query';
 
 const ShopDetails = () => {
     const { user } = useContext(authContext)
     const detailsData = useLoaderData()
     const { name, dec, price, productImg, stock, ratings, ratingsCount, category, authorImg, _id } = detailsData
 
-    const [smallImg, setSmallImg] = useState(authorImg[2])
+    const [smallImg, setSmallImg] = useState(authorImg[0])
 
 
     const handleDetailsData = e => {
@@ -39,10 +40,29 @@ const ShopDetails = () => {
             body: JSON.stringify(cartData)
         })
             .then(res => res.json())
-            .then(data => console.log(data))
+            .then(data => {
+                if (data.acknowledged) {
+                    toast.success('product added')
+                    console.log(data)
+                }
+            })
+
 
     }
-
+    // const { data: cart = [], refetch } = useQuery({
+    //     queryKey: [user?.email],
+    //     queryFn: async () => {
+    //         const res = await fetch(`http://localhost:5000/cart`, {
+    //             method: "POST",
+    //             headers: {
+    //                 "content-type": "application/json"
+    //             },
+    //             body: JSON.stringify(cartData)
+    //         })
+    //         const data = await res.json()
+    //         return data
+    //     }
+    // })
 
 
     const handleCheck = (e) => {
@@ -128,7 +148,7 @@ const ShopDetails = () => {
                                 <input onClick={handleNumber} max={stock} min={1} name='productNumber' type="number" defaultValue="1" className='border py-1 w-[70px] pl-3 rounded-md mr-5' />
                                 <button onClick={handleCheck} className='capitalize text-[17px] py-2 pt-3 px-6 bg-[tomato] text-white rounded-[30px] mr-4'>add to cart</button>
                                 <Link to={'/cart'}>
-                                    <button onClick={handleCheck} className='capitalize text-[17px] pt-3 py-2 px-6 bg-[tomato] text-white rounded-[30px]'>View Cart</button>
+                                    <button className='capitalize text-[17px] pt-3 py-2 px-6 bg-[tomato] text-white rounded-[30px]'>View Cart</button>
                                 </Link>
                             </div>
                             <p>{dec}</p>

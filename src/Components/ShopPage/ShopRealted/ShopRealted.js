@@ -20,13 +20,13 @@ const ShopRealted = ({ category, id }) => {
             <div className='grid grid-cols-4 gap-8 px-20 pb-20'>
                 {
                     relatedDatas.map(relatedData => {
-                        const { img, name, price, seller, _id } = relatedData
+                        const { productImg, name, price, seller, _id } = relatedData
 
                         return (
                             <div key={relatedData._id}>
                                 <div className='border border-[#e6e6e6] '>
                                     <div className='text-img '>
-                                        <img src={img} alt={name} className='w-full' />
+                                        <img src={productImg} alt={name} className='w-full' />
                                         <div className='text-overly z-10 flex justify-center items-center flex-col gap-7'>
                                             <div className='image-icon'>
                                                 <AiFillEye className='text-[23px] icon'></AiFillEye>

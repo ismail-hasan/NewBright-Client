@@ -48,7 +48,7 @@ const ShopInfo = () => {
     ]
 
     return (
-        <div className='grid grid-cols-6 gap-8 px-20 mt-16'>
+        <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-5 px-10 lg:gap-8 lg:px-20 mt-16'>
             {
                 infoData.map(info => {
                     const { img, name, bgc } = info

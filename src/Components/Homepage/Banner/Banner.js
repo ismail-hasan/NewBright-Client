@@ -26,7 +26,7 @@ const Banner = () => {
 
     return (
         <div>
-            <div className='grid grid-cols-3 gap-10 px-20 pb-20'>
+            <div className='grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-10 px-10 lg:px-20 pb-20'>
                 {
                     bannerData.map(Bdata => {
                         const { name, img, dec } = Bdata

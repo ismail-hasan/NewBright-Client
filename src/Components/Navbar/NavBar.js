@@ -19,7 +19,7 @@ const NavBar = () => {
 
 
     const { data: cart = [], refetch } = useQuery({
-        queryKey: [user?.user],
+        queryKey: [user?.email],
         queryFn: async () => {
             const res = await fetch(`http://localhost:5000/cart?email=${user?.email}`)
             const data = await res.json()

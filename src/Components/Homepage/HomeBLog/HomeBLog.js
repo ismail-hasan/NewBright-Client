@@ -17,8 +17,8 @@ const HomeBLog = () => {
 
     console.log(blogs)
     return (
-        <div className='p-20 '>
-            <div className='grid grid-cols-4 gap-5'>
+        <div className='pb-20 px-10 lg:px-20'>
+            <div className='grid grid-cols-1 lg:grid-cols-4 gap-5'>
                 {
                     blogs.map(blog => {
                         const { name, img, dec, _id } = blog
@@ -40,7 +40,7 @@ const HomeBLog = () => {
                 }
             </div>
             <Link to='/blogs'>
-                <div className='w-[20%] mx-auto my-16'>
+                <div className='w-full lg:w-[20%] mx-auto my-16'>
                     <button className='bg-[tomato] text-white py-2 px-6 text-center capitalize text-lg '>read more</button>
                 </div>
             </Link>

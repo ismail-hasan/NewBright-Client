@@ -11,7 +11,7 @@ const WishList = () => {
     const { user } = useContext(authContext)
 
 
-    const { data: wishListData = [], refetch } = useQuery({
+    const { data: wishListData = [], isLoading, refetch } = useQuery({
         queryKey: [user?.email],
         queryFn: async () => {
             const res = await fetch(`http://localhost:5000/wishlists?email=${user?.email}`)
@@ -20,6 +20,9 @@ const WishList = () => {
         }
     })
 
+    if (isLoading) {
+        return <h1>loading....</h1>
+    }
 
     const handleDelete = (id) => {
 
@@ -49,12 +52,12 @@ const WishList = () => {
             <div className='grid grid-cols-4 gap-8'>
                 {
                     wishListData.map(productData => {
-                        const { img, name, price, seller, _id } = productData
+                        const { productImg, name, price, seller, _id } = productData
                         return (
                             <div key={productData._id}>
                                 <div className='border border-[#e6e6e6] '>
                                     <div className='text-img'>
-                                        <img src={img} alt={name} className='w-full' />
+                                        <img src={productImg} alt={name} className='w-full' />
                                         <div className='text-overly z-10 flex justify-center items-center flex-col gap-7'>
                                             <div className='image-icon'>
                                                 <AiFillEye className='text-[23px] icon'></AiFillEye>
