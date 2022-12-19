@@ -20,6 +20,8 @@ const ShopDetails = () => {
         const productPich = e.target.productNumber.value
         const productSize = e.target.size.value
         const email = user?.email
+        const subTotal = price * productPich
+        console.log(subTotal)
 
 
         const cartData = {
@@ -29,7 +31,8 @@ const ShopDetails = () => {
             productPich,
             productSize,
             productImg,
-            category
+            category,
+            subTotal
         }
 
         fetch("http://localhost:5000/cart", {

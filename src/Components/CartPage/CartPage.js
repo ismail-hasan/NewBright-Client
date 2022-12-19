@@ -35,7 +35,7 @@ const CartPage = () => {
     }
 
     const totalPrice = cartData.reduce((prev, cur) => {
-        return prev + cur.price
+        return prev + cur.subTotal
     }, 0
     )
 
@@ -69,7 +69,6 @@ const CartPage = () => {
                             </tr>
                         </thead>
                         <tbody>
-
                             {
                                 cartData.map(cartItem =>
                                     <>
@@ -78,7 +77,7 @@ const CartPage = () => {
                                                 <div className="flex items-center space-x-3">
                                                     <div className="avatar">
                                                         <div className="mask mask-squircle w-12 h-12">
-                                                            <img src={cartItem.img} alt="Avatar Tailwind CSS Component" />
+                                                            <img src={cartItem.productImg} alt="Avatar Tailwind CSS Component" />
                                                         </div>
                                                     </div>
                                                     <div>
@@ -90,20 +89,17 @@ const CartPage = () => {
                                                 </div>
                                             </td>
                                             <td> $ {cartItem.price} </td>
-                                            <td>$ {cartItem.price * cartItem.productPich}</td>
+                                            <td>$ {cartItem.subTotal}</td>
                                             <th>
                                                 <button onClick={() => handleCartDelete(cartItem._id)}>
                                                     <AiFillDelete></AiFillDelete>
                                                 </button>
                                             </th>
                                         </tr>
-
                                     </>
                                 )
                             }
                         </tbody>
-
-
                     </table>
                 </div>
             </div>
@@ -120,8 +116,7 @@ const CartPage = () => {
                 {/* </form> */}
                 <div className='flex justify-between mt-2'>
                     <p>Subtotal ({cartData.length}) Items</p>
-                    <p>all total: {totalPrice * cartData.length}</p>
-                    {/* <p>all total: {totalPrice * cartItem.productPich}</p> */}
+                    <p>all total: {totalPrice}</p>
                 </div>
                 <div className='flex justify-between mt-2'>
                     <p>Shopping cost</p>
@@ -134,8 +129,7 @@ const CartPage = () => {
                 <div className='flex mt-5 items-center justify-evenly'>
                     <div className='mr-5'>
                         <p className='text-black text-2xl font-[500]'>Total Price</p>
-                        {/* <p className='text-[tomato] font-bold text-[21px]'>$ {totalPrice * cartData.length}</p> */}
-                        {/* <p className='text-[tomato] font-bold text-[21px]'>$ {inputs === "ismail" ? totalPrice * cartData.length - 10 : totalPrice * cartData.length}</p> */}
+                        <p className='text-[tomato] font-bold text-[21px]'>$ {totalPrice}</p>
 
                     </div>
                     <div>
@@ -146,7 +140,7 @@ const CartPage = () => {
                     </div>
                 </div>
             </div>
-            
+
         </div >
     )
 
