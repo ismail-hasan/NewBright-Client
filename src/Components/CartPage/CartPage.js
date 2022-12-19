@@ -3,6 +3,7 @@ import React, { useContext, useState } from 'react';
 import { authContext } from '../../ContextProvider/ContextProvider';
 import { AiFillDelete } from 'react-icons/ai';
 import { MdLockOutline } from 'react-icons/md'
+import { Link } from 'react-router-dom';
 
 const CartPage = () => {
     const { user } = useContext(authContext)
@@ -36,7 +37,7 @@ const CartPage = () => {
 
 
     return (
-        <div className='px-20 py-10 flex gap-10 bg-[#e9e9e9]'>
+        <div className='px-20 py-10 flex gap-10 bg-[#efefef]'>
             <div className='w-[65%]'>
                 <div className="overflow-x-auto w-full">
                     <table className="table w-full">
@@ -76,15 +77,26 @@ const CartPage = () => {
                                                 </button>
                                             </th>
                                         </tr>
+
                                     </React.Fragment>
                                 )
+
                             }
+
                         </tbody>
+
                     </table>
+
+                    <div className='bg-white py-5'>
+                        <Link to='/shop'>
+                            <span className='pl-10 text-[25px] text-blue-600 '>Back to shop</span>
+                        </Link>
+                    </div>
+
                 </div>
             </div>
 
-            <div className='w-[30%] bg-white py-8 px-5'>
+            <div className='w-[30%] bg-white py-8 px-5 h-[63vh]'>
                 <h1 className='text-black text-3xl font-semibold text-center pb-5'>Order Summery </h1>
 
                 <p className='text-lg text-black pb-1'>PROMO CODE</p>

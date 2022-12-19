@@ -11,8 +11,17 @@ const ShopDetails = () => {
     const { user } = useContext(authContext)
     const detailsData = useLoaderData()
     const { name, dec, price, productImg, stock, ratings, ratingsCount, category, authorImg, _id } = detailsData
-
     const [smallImg, setSmallImg] = useState(authorImg[0])
+
+
+    const { data: detailsDatas = [], refetch } = useQuery({
+        queryKey: [],
+        queryFn: async () => {
+            const res = await fetch()
+            const data = await res.json()
+            return data
+        }
+    })
 
 
     const handleDetailsData = e => {
@@ -52,22 +61,7 @@ const ShopDetails = () => {
 
 
     }
-    // const { data: cart = [], refetch } = useQuery({
-    //     queryKey: [user?.email],
-    //     queryFn: async () => {
-    //         const res = await fetch(`http://localhost:5000/cart`, {
-    //             method: "POST",
-    //             headers: {
-    //                 "content-type": "application/json"
-    //             },
-    //             body: JSON.stringify(cartData)
-    //         })
-    //         const data = await res.json()
-    //         return data
-    //     }
-    // })
-
-
+    
     const handleCheck = (e) => {
         console.log('done')
 

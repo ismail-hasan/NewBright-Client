@@ -11,7 +11,7 @@ const WishList = () => {
     const { user } = useContext(authContext)
 
 
-    const { data: wishListData = [], isLoading, refetch } = useQuery({
+    const { data: wishListDatas = [], isLoading, refetch } = useQuery({
         queryKey: [user?.email],
         queryFn: async () => {
             const res = await fetch(`http://localhost:5000/wishlists?email=${user?.email}`)
@@ -19,6 +19,8 @@ const WishList = () => {
             return data
         }
     })
+
+    console.log("latest", wishListDatas)
 
     if (isLoading) {
         return <h1>loading....</h1>
@@ -41,17 +43,17 @@ const WishList = () => {
 
     }
 
-
+    refetch()
     return (
         <div className='p-20'>
             {
-                !wishListData.length &&
-                <h1 h1 className='text-3xl capitalize font-[500] text-center h-[50vh] flex items-center justify-center'>no data available</h1>
+                !wishListDatas.length &&
+                <h1 className='text-3xl capitalize font-[500] text-center h-[50vh] flex items-center justify-center'>no data available</h1>
             }
 
             <div className='grid grid-cols-4 gap-8'>
                 {
-                    wishListData.map(productData => {
+                    wishListDatas.map(productData => {
                         const { productImg, name, price, seller, _id } = productData
                         return (
                             <div key={productData._id}>
