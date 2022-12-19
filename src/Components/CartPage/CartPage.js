@@ -6,7 +6,7 @@ import { MdLockOutline } from 'react-icons/md'
 
 const CartPage = () => {
     const { user } = useContext(authContext)
-    const [inputs, setInput] = useState('');
+    const [cupons, setCupons] = useState('');
 
     const { data: cartData = [], refetch, isLoading } = useQuery({
         queryKey: [user?.email],
@@ -16,11 +16,6 @@ const CartPage = () => {
             return data
         }
     })
-    // if (isLoading) {
-    //     return <h1>losdfsdfsfsdfsdfading</h1>
-    // }
-
-
 
     const handleCartDelete = (id) => {
         console.log(id)
@@ -39,21 +34,6 @@ const CartPage = () => {
     }, 0
     )
 
-    console.log(totalPrice)
-
-
-    // const handleCuponForm = (e) => {
-    //     e.preventDefault()
-    //     const cupon = e.target.cupon.value
-    //     console.log(cupon)
-    //     if (cupon === "ismail") {
-    //         const newTotalPrice = totalPrice - 10
-    //     }
-    //     return newTotalPrice
-
-    // }
-
-    console.log(inputs)
 
     return (
         <div className='px-20 py-10 flex gap-10 bg-[#e9e9e9]'>
@@ -71,8 +51,8 @@ const CartPage = () => {
                         <tbody>
                             {
                                 cartData.map(cartItem =>
-                                    <>
-                                        <tr key={cartItem._id}>
+                                    <React.Fragment key={cartItem._id}>
+                                        <tr>
                                             <td>
                                                 <div className="flex items-center space-x-3">
                                                     <div className="avatar">
@@ -96,7 +76,7 @@ const CartPage = () => {
                                                 </button>
                                             </th>
                                         </tr>
-                                    </>
+                                    </React.Fragment>
                                 )
                             }
                         </tbody>
@@ -106,17 +86,14 @@ const CartPage = () => {
 
             <div className='w-[30%] bg-white py-8 px-5'>
                 <h1 className='text-black text-3xl font-semibold text-center pb-5'>Order Summery </h1>
-                <div className='flex justify-between mt-2 mb-4'>
-                    <p>item {cartData.length}</p>
-                </div>
+
                 <p className='text-lg text-black pb-1'>PROMO CODE</p>
-                {/* <form onSubmit={handleCuponForm} action="" className='mb-8'> */}
-                <input onBlur={e => setInput(e.target.value)} name='cupon' className='border-2 border-[#dcdcdc] rounded px-5 py-2 outline-none' type="text" />
+                <input onBlur={e => setCupons(e.target.value)} name='cupon' className='border-2 border-[#dcdcdc] rounded px-5 py-2 outline-none' type="text" />
                 <button className='bg-[tomato] text-lg py-1 px-4 ml-4 text-white'>Apply</button>
-                {/* </form> */}
-                <div className='flex justify-between mt-2'>
+
+                <div className='flex justify-between mt-4'>
                     <p>Subtotal ({cartData.length}) Items</p>
-                    <p>all total: {totalPrice}</p>
+                    <p>All Total: {totalPrice}</p>
                 </div>
                 <div className='flex justify-between mt-2'>
                     <p>Shopping cost</p>
@@ -129,7 +106,7 @@ const CartPage = () => {
                 <div className='flex mt-5 items-center justify-evenly'>
                     <div className='mr-5'>
                         <p className='text-black text-2xl font-[500]'>Total Price</p>
-                        <p className='text-[tomato] font-bold text-[21px]'>$ {totalPrice}</p>
+                        <p className='text-[tomato] font-bold text-[21px]'>$ {cupons === "ismail" ? totalPrice - 40 : totalPrice}</p>
 
                     </div>
                     <div>
