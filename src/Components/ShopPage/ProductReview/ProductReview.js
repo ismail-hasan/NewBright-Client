@@ -1,22 +1,55 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { toast } from 'react-hot-toast';
 import ReactStars from 'react-rating-stars-component';
-const ratingChanged = (rating) => {
-    console.log(rating)
-}
+
 
 
 const ProductReview = () => {
+    const [ratings, setRatings] = useState(5)
+    const ratingChanged = (rating) => {
+        setRatings(rating)
+    }
+    const handleForm = (e) => {
+        e.preventDefault()
+        const form = e.target
+        const reviweName = form.reivewName.value
+        const reviewDec = form.reivewDec.value
+        console.log(reviweName, reviewDec, ratings)
+
+
+        const reviewProducts = { reviweName, reviewDec, ratings }
+
+        fetch('http://localhost:5000/review', {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(reviewProducts)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.acknowledged) {
+                    toast.success("Review Added")
+                    form.reset()
+                    console.log(data)
+                }
+
+            })
+
+    }
+
+
     return (
         <div className='px-20 mb-20'>
-            <h1 className='text-3xl font-semibold mb-5'>Write A Review</h1>
-            <form action="">
+            <h1 className='text-3xl mb-5 font-semibold'>Write A Review</h1>
+            <form onSubmit={handleForm} action="">
                 <p>
                     <label htmlFor="">Name: </label> <br />
-                    <input type="text" placeholder="Type here" className="input input-bordered w-full" />
+                    <input required name='reivewName' type="text" placeholder="Type here" className="input input-bordered w-full" />
                 </p>
                 <p className='mt-7'>
                     <label htmlFor="">Message: </label> <br />
-                    <textarea className="textarea textarea-ghost input-bordered w-full h-36" placeholder="Bio"></textarea>
+                    <textarea required name='reivewDec' className="textarea textarea-ghost input-bordered w-full h-36" placeholder="Bio"></textarea>
                 </p>
                 <div className='flex mt-5'>
                     <p className='text-[24px] mr-4'> Rating :</p>
@@ -27,6 +60,9 @@ const ProductReview = () => {
                             size={31}
                             activeColor="#ffd700"
                             isHalf={true}
+                            value={5}
+
+
                         />
                     </div>
                 </div>

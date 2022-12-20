@@ -14,14 +14,14 @@ const ShopDetails = () => {
     const [smallImg, setSmallImg] = useState(authorImg[0])
 
 
-    const { data: detailsDatas = [], refetch } = useQuery({
-        queryKey: [],
-        queryFn: async () => {
-            const res = await fetch()
-            const data = await res.json()
-            return data
-        }
-    })
+    // const { data: detailsDatas = [], refetch } = useQuery({
+    //     queryKey: [],
+    //     queryFn: async () => {
+    //         const res = await fetch()
+    //         const data = await res.json()
+    //         return data
+    //     }
+    // })
 
 
     const handleDetailsData = e => {
@@ -61,7 +61,7 @@ const ShopDetails = () => {
 
 
     }
-    
+
     const handleCheck = (e) => {
         console.log('done')
 
