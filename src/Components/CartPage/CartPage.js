@@ -38,8 +38,8 @@ const CartPage = () => {
 
 
     return (
-        <div className='px-20 py-10 flex gap-10 bg-[#efefef]'>
-            <div className='w-[65%]'>
+        <div className='px-20 py-10 lg:flex gap-10 bg-[#efefef]'>
+            <div className='w-full lg:w-[65%]'>
                 <div className="overflow-x-auto w-full">
                     <table className="table w-full">
                         <thead>
@@ -81,11 +81,8 @@ const CartPage = () => {
 
                                     </React.Fragment>
                                 )
-
                             }
-
                         </tbody>
-
                     </table>
 
                     <div className='bg-white py-5 '>
@@ -100,12 +97,14 @@ const CartPage = () => {
                 </div>
             </div>
 
-            <div className='w-[30%] bg-white py-8 px-5 h-[63vh]'>
+            <div className='w-full mt-10 lg:mt-0 lg:w-[30%] bg-white py-8 px-5 h-[63vh]'>
                 <h1 className='text-black text-3xl font-semibold text-center pb-5'>Order Summery </h1>
 
                 <p className='text-lg text-black pb-1'>PROMO CODE</p>
-                <input onBlur={e => setCupons(e.target.value)} name='cupon' className='border-2 border-[#dcdcdc] rounded px-5 py-2 outline-none' type="text" />
-                <button className='bg-[tomato] text-lg py-1 px-4 ml-4 text-white'>Apply</button>
+                <div className='flex'>
+                    <input onBlur={e => setCupons(e.target.value)} name='cupon' className='border-2 border-[#dcdcdc] rounded px-5 py-2 outline-none w-full' type="text" />
+                    <button className='bg-[tomato] text-lg py-1 px-4 ml-4 text-white'>Apply</button>
+                </div>
 
                 <div className='flex justify-between mt-4'>
                     <p>Subtotal ({cartData.length}) Items</p>
