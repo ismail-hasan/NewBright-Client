@@ -4,14 +4,14 @@ import { Link, useLoaderData } from 'react-router-dom';
 const Blog = () => {
     const blogDatas = useLoaderData()
     return (
-        <div className='px-20 py-20'>
+        <div className='px-10 md:px-20 py-20'>
             <div>
                 {
                     blogDatas.map(blogData => {
                         const { name, img, dec, _id, number } = blogData
                         return (
                             <div key={blogData._id}>
-                                <div className='flex items-center gap-16 mt-24 relative'>
+                                <div className='lg:flex items-center gap-16 mt-24 relative'>
                                     <div className='w-full lg:w-[40%]'>
                                         <img className='z-10' src={img} alt="" />
                                         <div>
@@ -19,7 +19,7 @@ const Blog = () => {
                                         </div>
                                     </div>
                                     <div className='w-full lg:w-[50%]'>
-                                        <h1 className='text-[40px] text-black font-semibold capitalize'> {name}</h1>
+                                        <h1 className='text-[40px] mt-3 md:mt-0 text-black font-semibold capitalize'> {name}</h1>
                                         <p className='text-lg mt-2 mb-5'>{dec}</p>
                                         <Link to={`/blogs/${_id}`} className=' text-[tomato] hover:text-blue-500 flex items-center' href="#">
                                             <span className='text-lg'>Read More To You Are Enjoyed</span>
