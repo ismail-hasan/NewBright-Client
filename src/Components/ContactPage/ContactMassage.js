@@ -24,7 +24,7 @@ const ContactMassage = () => {
                 </div>
                 <p>+880 1776458113</p>
             </div>
-            <div className='bg-white -my-16 shadow-lg py-10 px-8 w-[30%] rounded-sm'>
+            <div className='bg-white -my-16 shadow-lg py-10 px-8 w-full lg:w-[30%] rounded-sm'>
                 <h1 className='text-black text-[36px] mt-4 mb-5 font-[500]'>Contact Us</h1>
                 <form action="" className='text-input'>
                     <input placeholder='Enter Your Name' type="text" />

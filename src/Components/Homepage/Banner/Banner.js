@@ -26,7 +26,7 @@ const Banner = () => {
 
     return (
         <div>
-            <div className='grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-10 px-10 lg:px-20 pb-20'>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-10 px-10 lg:px-20 pb-20'>
                 {
                     bannerData.map(Bdata => {
                         const { name, img, dec } = Bdata
@@ -34,7 +34,7 @@ const Banner = () => {
                         return (
                             <div key={Bdata.id}>
                                 <div className="relative text-white">
-                                    <img src={img} className="" alt={name} />
+                                    <img src={img} className="w-full" alt={name} />
                                     <div className="absolute w-full text-center top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]">
                                         <h2 className="text-[29px] font-[500] ">{name}</h2>
                                         <p className='text-lg'>{dec}</p>

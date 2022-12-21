@@ -12,13 +12,13 @@ const Blog = () => {
                         return (
                             <div key={blogData._id}>
                                 <div className='flex items-center gap-16 mt-24 relative'>
-                                    <div className='w-[40%]'>
+                                    <div className='w-full lg:w-[40%]'>
                                         <img className='z-10' src={img} alt="" />
                                         <div>
                                             <p className='absolute -z-20 left-[10%] -top-[50px] text-8xl font-bold tracking-[6px] opacity-[0.5]'>{number}</p>
                                         </div>
                                     </div>
-                                    <div className='w-[50%]'>
+                                    <div className='w-full lg:w-[50%]'>
                                         <h1 className='text-[40px] text-black font-semibold capitalize'> {name}</h1>
                                         <p className='text-lg mt-2 mb-5'>{dec}</p>
                                         <Link to={`/blogs/${_id}`} className=' text-[tomato] hover:text-blue-500 flex items-center' href="#">

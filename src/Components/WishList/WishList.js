@@ -10,7 +10,6 @@ import { authContext } from '../../ContextProvider/ContextProvider';
 const WishList = () => {
     const { user } = useContext(authContext)
 
-
     const { data: wishListDatas = [], isLoading, refetch } = useQuery({
         queryKey: [user?.email],
         queryFn: async () => {
@@ -39,8 +38,6 @@ const WishList = () => {
                     refetch()
                 }
             })
-
-
     }
 
     refetch()

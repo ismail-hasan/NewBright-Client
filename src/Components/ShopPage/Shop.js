@@ -15,11 +15,10 @@ const Shop = () => {
     const { user } = useContext(authContext)
     const email = user?.email
 
-    const hello = {
+    const useEmail = {
         email
     }
-    console.log(hello)
-
+    console.log(useEmail)
 
 
     const handleHeart = (id) => {
@@ -28,7 +27,7 @@ const Shop = () => {
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(hello)
+            body: JSON.stringify(useEmail)
         })
             .then(res => res.json())
             .then(data => {
@@ -57,7 +56,7 @@ const Shop = () => {
     return (
         <div>
             <h1>All  Product Data : {productDatas.length}</h1>
-            <div className='grid grid-cols-4 gap-8'>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6'>
                 {
                     productDatas.map(productData => {
                         const { productImg, name, price, seller, _id } = productData
@@ -84,7 +83,7 @@ const Shop = () => {
                                     </div>
                                     <div className='py-5 px-3'>
                                         <div>
-                                            <p>{seller}</p>
+                                            <p className='capitalize text-[15px]'>{seller}</p>
                                             <h1 className='font-[700] text-[26px] capitalize'>{name}</h1>
                                         </div>
                                         <div className='flex justify-between items-center'>

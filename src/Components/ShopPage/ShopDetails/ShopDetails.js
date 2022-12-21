@@ -96,9 +96,9 @@ const ShopDetails = () => {
 
     return (
         <div>
-            <div className='my-20 px-20' >
-                <div className='flex justify-between items-center gap-x-14'>
-                    <div className='w-[40%]'>
+            <div className='my-20 px-5 md:px-10 lg:px-20' >
+                <div className='md:flex justify-between items-center gap-x-14'>
+                    <div className='w-full lg:w-[40%]'>
                         <img src={smallImg.img1} alt="mainImg" />
                         <div className='flex justify-between mt-3 overflow-hidden gap-2'>
                             {
@@ -112,7 +112,7 @@ const ShopDetails = () => {
                             }
                         </div>
                     </div>
-                    <div className='w-[50%]'>
+                    <div className='w-full lg:w-[50%]'>
                         <form onSubmit={handleDetailsData} action="">
 
                             <p className='flex'>

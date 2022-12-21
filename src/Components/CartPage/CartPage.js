@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import React, { useContext, useState } from 'react';
 import { authContext } from '../../ContextProvider/ContextProvider';
 import { AiFillDelete } from 'react-icons/ai';
+import { BsArrowLeft } from 'react-icons/bs';
 import { MdLockOutline } from 'react-icons/md'
 import { Link } from 'react-router-dom';
 
@@ -87,9 +88,12 @@ const CartPage = () => {
 
                     </table>
 
-                    <div className='bg-white py-5'>
+                    <div className='bg-white py-5 '>
                         <Link to='/shop'>
-                            <span className='pl-10 text-[25px] text-blue-600 '>Back to shop</span>
+                            <div className='flex items-center pl-10'>
+                                <span><BsArrowLeft className='font-[900] text-blue-600  text-3xl'></BsArrowLeft></span>
+                                <span className=' ml-2 text-[25px] text-blue-600 '>Back to shop</span>
+                            </div>
                         </Link>
                     </div>
 

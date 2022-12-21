@@ -44,7 +44,7 @@ const NavBar = () => {
                     <div className="">
                         <Link className="btn btn-ghost normal-case text-xl">Bright Commerce</Link>
                     </div>
-                    <div className="">
+                    {/* <div className="">
                         <ul className="menu menu-horizontal px-1">
                             <li> <Link to='/'>Home</Link> </li>
                             <li> <Link to='/about'>About</Link> </li>
@@ -66,7 +66,7 @@ const NavBar = () => {
                             }
 
                         </ul>
-                    </div>
+                    </div> */}
 
                     <div className="">
                         <div className="dropdown dropdown-end">
