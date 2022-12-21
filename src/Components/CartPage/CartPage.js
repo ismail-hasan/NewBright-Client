@@ -38,7 +38,7 @@ const CartPage = () => {
 
 
     return (
-        <div className='px-20 py-10 lg:flex gap-10 bg-[#efefef]'>
+        <div className='px-5 lg:px-20 py-10 lg:flex gap-10 bg-[#efefef]'>
             <div className='w-full lg:w-[65%]'>
                 <div className="overflow-x-auto w-full">
                     <table className="table w-full">
@@ -97,7 +97,7 @@ const CartPage = () => {
                 </div>
             </div>
 
-            <div className='w-full mt-10 lg:mt-0 lg:w-[30%] bg-white py-8 px-5 h-[63vh]'>
+            <div className='w-full mt-10 lg:mt-0 lg:w-[30%] bg-white py-8 px-5 h-[66vh]'>
                 <h1 className='text-black text-3xl font-semibold text-center pb-5'>Order Summery </h1>
 
                 <p className='text-lg text-black pb-1'>PROMO CODE</p>
