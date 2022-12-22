@@ -8,6 +8,8 @@ export const authContext = createContext()
 const ContextProvider = ({ children }) => {
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true)
+    const [product, setProduct] = useState(null)
+
 
 
     const Auth = getAuth(app)
@@ -45,25 +47,6 @@ const ContextProvider = ({ children }) => {
     //////////////////////////
 
 
-    // const reivewsStart = (ratings) => {
-    //      Array.from({ length: 5 }, (elem, index) => {
-    //         let number = index + 0.5
-    //         return (
-    //             <span className='mb-3'>
-    //                 {
-    //                     ratings >= index + 1 ? <FaStar className='mr-1 text-lg' ></FaStar>
-    //                         :
-    //                         ratings >= number ? <FaStarHalfAlt className='mr-1 text-lg' ></FaStarHalfAlt>
-    //                             :
-    //                             <AiOutlineStar className='mr-1 text-lg' ></AiOutlineStar>
-    //                 }
-    //             </span>
-    //         )
-    //     })
-    // }
-
-
-    //////////////////////////
 
     const userInfo = {
         user,
@@ -72,6 +55,8 @@ const ContextProvider = ({ children }) => {
         updateUser,
         logOut,
         loading,
+        product,
+        setProduct
     }
     return (
 

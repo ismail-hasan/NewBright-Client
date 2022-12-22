@@ -14,6 +14,7 @@ import ModalShop from './ModalShop/ModalShop';
 const Shop = ({ setProduct, product }) => {
     const productDatas = useLoaderData()
     const { user } = useContext(authContext)
+
     const email = user?.email
 
     const useEmail = {
@@ -50,9 +51,6 @@ const Shop = ({ setProduct, product }) => {
     //         .then(data => console.log(data))
     // }
 
-    const check = () => {
-        toast.success("Comming Soon")
-    }
 
 
     return (
@@ -69,7 +67,7 @@ const Shop = ({ setProduct, product }) => {
                                         <img src={productImg} alt={name} className='w-full' />
                                         <div className='text-overly z-10 flex justify-center items-center flex-col gap-7'>
                                             <label onClick={() => setProduct(productData)} className='image-icon' htmlFor="my-modal-3" >
-                                                <AiFillEye onClick={check} className='text-[23px] icon'></AiFillEye>
+                                                <AiFillEye className='text-[23px] icon'></AiFillEye>
                                             </label>
 
                                             <div className='image-icon' onClick={() => handleHeart(_id)}>

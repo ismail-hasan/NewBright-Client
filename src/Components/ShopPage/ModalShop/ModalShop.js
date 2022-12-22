@@ -10,7 +10,7 @@ const ModalShop = ({ product }) => {
     const [smallImg, setSmallImg] = useState(authorImg[0])
 
 
-    console.log("df", authorImg[2])
+    console.log("df", product)
 
 
 
