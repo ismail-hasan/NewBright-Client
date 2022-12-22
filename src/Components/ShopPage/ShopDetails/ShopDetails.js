@@ -148,8 +148,8 @@ const ShopDetails = () => {
                                     <button className='capitalize text-[17px] pt-3 py-2 px-6 bg-[tomato] text-white rounded-[30px]'>View Cart</button>
                                 </Link>
                             </div>
-                            <p>{dec}</p>
-                            <h1 className='text-[44px] text-black capitalize font-semibold pt-5'>Prodect Description</h1>
+                            <h1 className='text-[44px] text-black capitalize font-semibold pt-8'>Prodect Description</h1>
+                            <p className=''>{dec.length > 100 && dec.slice(0, 300)}</p>
                         </form>
                     </div>
                 </div>

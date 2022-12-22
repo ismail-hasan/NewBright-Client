@@ -18,7 +18,7 @@ const ShopRealted = ({ category, id }) => {
     return (
         <div className='mt-32'>
             <h1 className='text-4xl mb-10 ml-10 lg:ml-16 font-semibold text-black capitalize'>related product</h1>
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 px-10 lg:px-20 pb-20'>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 px-10 lg:px-20 pb-5'>
                 {
                     relatedDatas.map(relatedData => {
                         const { productImg, name, price, seller, _id } = relatedData

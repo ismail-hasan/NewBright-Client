@@ -39,6 +39,7 @@ const ReviewInfo = () => {
 
     return (
         <div className='my-20'>
+            <h1 className='text-4xl text-black font-semibold'>Total Review</h1>
             <Swiper
                 slidesPerView={1}
                 spaceBetween={10}
