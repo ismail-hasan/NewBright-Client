@@ -13,7 +13,7 @@ const WishList = () => {
     const { data: wishListDatas = [], isLoading, refetch } = useQuery({
         queryKey: [user?.email],
         queryFn: async () => {
-            const res = await fetch(`https://bright-ecommerce.vercel.app/wishlists?email=${user?.email}`)
+            const res = await fetch(`http://localhost:5000/wish?email=${user?.email}`)
             const data = await res.json()
             return data
         }
@@ -26,8 +26,9 @@ const WishList = () => {
     }
 
     const handleDelete = (id) => {
+        console.log(id)
 
-        fetch(`https://bright-ecommerce.vercel.app/deletewish/${id}`, {
+        fetch(`http://localhost:5000/wishdelete/${id}`, {
             method: "DELETE"
         })
             .then(res => res.json())
@@ -51,7 +52,7 @@ const WishList = () => {
             <div className='grid grid-cols-4 gap-8'>
                 {
                     wishListDatas.map(productData => {
-                        const { productImg, name, price, seller, _id } = productData
+                        const { productImg, name, price, seller, _id, mainId } = productData
                         return (
                             <div key={productData._id}>
                                 <div className='border border-[#e6e6e6] '>
@@ -62,11 +63,11 @@ const WishList = () => {
                                                 <AiFillEye className='text-[23px] icon'></AiFillEye>
                                             </div>
 
-                                            <div className='image-icon' onClick={() => handleDelete(_id)}>
+                                            <div className='image-icon' onClick={() => handleDelete(mainId)}>
                                                 <AiTwotoneDelete className='text-[23px] icon'></AiTwotoneDelete>
                                             </div>
 
-                                            <Link to={`/shop/${_id}`}>
+                                            <Link to={`/shop/${mainId}`}>
                                                 <div className='image-icon'>
                                                     <AiFillEye className='text-[23px] icon'></AiFillEye>
                                                 </div>

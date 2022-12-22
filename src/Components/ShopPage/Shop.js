@@ -16,6 +16,7 @@ const Shop = ({ setProduct, product }) => {
     const { user } = useContext(authContext)
 
     const email = user?.email
+    const wishlist = true
 
     const useEmail = {
         email
@@ -23,25 +24,28 @@ const Shop = ({ setProduct, product }) => {
     console.log(useEmail)
 
 
-    const handleHeart = (id) => {
-        fetch(`https://bright-ecommerce.vercel.app/wishlists/${id}`, {
-            method: "PUT",
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(useEmail)
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data.acknowledged) {
-                    toast.success('WishList item Added')
-                }
-                else {
-                    toast.error('Allready Item Added')
-                }
-                console.log(data)
-            })
-    }
+
+
+    // const handleHeart = (id) => {
+    //     fetch(`https://bright-ecommerce.vercel.app/wishlists/${id}`, {
+    //         method: "PUT",
+    //         headers: {
+    //             'content-type': 'application/json'
+    //         },
+    //         body: JSON.stringify(useEmail)
+    //     })
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             if (data.acknowledged) {
+    //                 toast.success('WishList item Added')
+    //             }
+    //             else {
+    //                 toast.error('Allready Item Added')
+    //             }
+    //             console.log(data)
+    //         })
+    // }
+    ////////////
     // const handleWishlist = (id) => {
     //     fetch(`https://bright-ecommerce.vercel.app/wishlists/${id}`, {
     //         method: "POST",
@@ -60,6 +64,27 @@ const Shop = ({ setProduct, product }) => {
                 {
                     productDatas.map(productData => {
                         const { productImg, name, price, seller, _id } = productData
+                        const handleHeart = () => {
+                            const mainId = _id
+
+                            const wishData = { productImg, name, price, seller, email, wishlist, mainId }
+
+                            fetch(`http://localhost:5000/wish`, {
+                                method: "POST",
+                                headers: {
+                                    'content-type': 'application/json'
+                                },
+                                body: JSON.stringify(wishData)
+                            })
+                                .then(res => res.json())
+                                .then(data => {
+                                    if (data.acknowledged) {
+                                        toast.success('wish list item added')
+                                        console.log(data)
+
+                                    }
+                                })
+                        }
                         return (
                             <div key={productData._id}>
                                 <div className='border border-[#e6e6e6] '>
