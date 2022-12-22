@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { FaCartArrowDown } from 'react-icons/fa';
 import { Link, useLoaderData } from 'react-router-dom';
 import { AiFillEye } from 'react-icons/ai';
@@ -7,10 +7,11 @@ import { BsHeartFill } from 'react-icons/bs';
 import './Shop.css'
 import { authContext } from '../../ContextProvider/ContextProvider';
 import { toast } from 'react-hot-toast';
+import ModalShop from './ModalShop/ModalShop';
 
 
 
-const Shop = () => {
+const Shop = ({ setProduct, product }) => {
     const productDatas = useLoaderData()
     const { user } = useContext(authContext)
     const email = user?.email
@@ -50,8 +51,9 @@ const Shop = () => {
     // }
 
     const check = () => {
-        toast.success("added")
+        toast.success("Comming Soon")
     }
+
 
     return (
         <div>
@@ -66,9 +68,9 @@ const Shop = () => {
                                     <div className='text-img'>
                                         <img src={productImg} alt={name} className='w-full' />
                                         <div className='text-overly z-10 flex justify-center items-center flex-col gap-7'>
-                                            <div className='image-icon'>
+                                            <label onClick={() => setProduct(productData)} className='image-icon' htmlFor="my-modal-3" >
                                                 <AiFillEye onClick={check} className='text-[23px] icon'></AiFillEye>
-                                            </div>
+                                            </label>
 
                                             <div className='image-icon' onClick={() => handleHeart(_id)}>
                                                 <BsHeartFill className='text-[23px] icon'></BsHeartFill>
@@ -78,9 +80,11 @@ const Shop = () => {
                                                     <AiFillEye className='text-[23px] icon'></AiFillEye>
                                                 </div>
                                             </Link>
-
                                         </div>
+                                        {/* <ModalShop productData={productData}></ModalShop> */}
+
                                     </div>
+
                                     <div className='py-5 px-3'>
                                         <div>
                                             <p className='capitalize text-[15px]'>{seller}</p>
@@ -99,7 +103,8 @@ const Shop = () => {
                     })
                 }
             </div>
-        </div>
+
+        </div >
     );
 };
 
