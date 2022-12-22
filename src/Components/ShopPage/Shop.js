@@ -22,7 +22,7 @@ const Shop = () => {
 
 
     const handleHeart = (id) => {
-        fetch(`http://localhost:5000/wishlists/${id}`, {
+        fetch(`https://bright-ecommerce.vercel.app/wishlists/${id}`, {
             method: "PUT",
             headers: {
                 'content-type': 'application/json'
@@ -41,7 +41,7 @@ const Shop = () => {
             })
     }
     // const handleWishlist = (id) => {
-    //     fetch(`http://localhost:5000/wishlists/${id}`, {
+    //     fetch(`https://bright-ecommerce.vercel.app/wishlists/${id}`, {
     //         method: "POST",
     //         body:
     //     })

@@ -13,7 +13,7 @@ const CartPage = () => {
     const { data: cartData = [], refetch, isLoading } = useQuery({
         queryKey: [user?.email],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/cart?email=${user?.email}`)
+            const res = await fetch(`https://bright-ecommerce.vercel.app/cart?email=${user?.email}`)
             const data = await res.json()
             return data
         }
@@ -21,7 +21,7 @@ const CartPage = () => {
 
     const handleCartDelete = (id) => {
         console.log(id)
-        fetch(`http://localhost:5000/deletecart/${id}`, {
+        fetch(`https://bright-ecommerce.vercel.app/deletecart/${id}`, {
             method: "DELETE"
         })
             .then(res => res.json())

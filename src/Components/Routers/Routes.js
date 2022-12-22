@@ -25,12 +25,12 @@ const router = createBrowserRouter([
             {
                 path: '/blogs',
                 element: <Blog></Blog>,
-                loader: () => fetch("http://localhost:5000/blogs")
+                loader: () => fetch("https://bright-ecommerce.vercel.app/blogs")
             },
             {
                 path: '/blogs/:id',
                 element: <BlogDetails></BlogDetails>,
-                loader: ({ params }) => fetch(`http://localhost:5000/blogs/${params.id}`)
+                loader: ({ params }) => fetch(`https://bright-ecommerce.vercel.app/blogs/${params.id}`)
             },
             {
                 path: 'contact',
@@ -51,7 +51,7 @@ const router = createBrowserRouter([
             {
                 path: 'wishlist',
                 element: <PrivetRouter><WishList></WishList></PrivetRouter>,
-                loader: () => fetch('http://localhost:5000/wishlists')
+                loader: () => fetch('https://bright-ecommerce.vercel.app/wishlists')
             },
             {
                 path: 'cart',
@@ -60,12 +60,12 @@ const router = createBrowserRouter([
             {
                 path: 'shop',
                 element: <ShopPage></ShopPage>,
-                loader: () => fetch('http://localhost:5000/products')
+                loader: () => fetch('https://bright-ecommerce.vercel.app/products')
             },
             {
                 path: '/shop/:id',
                 element: <ShopDetails></ShopDetails>,
-                loader: ({ params }) => fetch(`http://localhost:5000/products/${params.id}`)
+                loader: ({ params }) => fetch(`https://bright-ecommerce.vercel.app/products/${params.id}`)
             },
         ]
 

@@ -20,7 +20,7 @@ const ProductReview = () => {
 
         const reviewProducts = { reviweName, reviewDec, ratings }
 
-        fetch('http://localhost:5000/review', {
+        fetch('https://bright-ecommerce.vercel.app/review', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'

@@ -7,7 +7,7 @@ const ShopRealted = ({ category, id }) => {
     const [relatedDatas, setRelatedDatas] = useState([])
 
     useEffect(() => {
-        fetch(`http://localhost:5000/product?category=${category}`)
+        fetch(`https://bright-ecommerce.vercel.app/product?category=${category}`)
             .then(res => res.json())
             .then(data => {
                 const dataFilter = data.filter(trys => id != trys._id)

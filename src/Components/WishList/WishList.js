@@ -13,7 +13,7 @@ const WishList = () => {
     const { data: wishListDatas = [], isLoading, refetch } = useQuery({
         queryKey: [user?.email],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/wishlists?email=${user?.email}`)
+            const res = await fetch(`https://bright-ecommerce.vercel.app/wishlists?email=${user?.email}`)
             const data = await res.json()
             return data
         }
@@ -27,7 +27,7 @@ const WishList = () => {
 
     const handleDelete = (id) => {
 
-        fetch(`http://localhost:5000/deletewish/${id}`, {
+        fetch(`https://bright-ecommerce.vercel.app/deletewish/${id}`, {
             method: "DELETE"
         })
             .then(res => res.json())

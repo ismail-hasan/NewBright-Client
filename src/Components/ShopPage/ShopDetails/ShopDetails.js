@@ -44,7 +44,7 @@ const ShopDetails = () => {
             subTotal
         }
 
-        fetch("http://localhost:5000/cart", {
+        fetch("https://bright-ecommerce.vercel.app/cart", {
             method: "POST",
             headers: {
                 "content-type": "application/json"

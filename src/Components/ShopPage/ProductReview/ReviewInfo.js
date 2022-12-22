@@ -17,7 +17,7 @@ const ReviewInfo = () => {
     const { data: reviewInfo = [], refetch, isLoading } = useQuery({
         queryKey: ["review"],
         queryFn: async () => {
-            const res = await fetch("http://localhost:5000/review")
+            const res = await fetch("https://bright-ecommerce.vercel.app/review")
             const data = await res.json()
             return data
         }
@@ -27,7 +27,7 @@ const ReviewInfo = () => {
     }
 
     // useEffect(() => {
-    //     fetch("http://localhost:5000/review")
+    //     fetch("https://bright-ecommerce.vercel.app/review")
     //         .then(res => res.json())
     //         .then(data => {
     //             console.log(data)

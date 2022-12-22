@@ -6,7 +6,7 @@ const HomeBLog = () => {
 
     const [blogs, setBlogs] = useState([])
     useEffect(() => {
-        fetch(`http://localhost:5000/limitbLog`)
+        fetch(`https://bright-ecommerce.vercel.app/limitbLog`)
             .then(res => res.json())
             .then(data => {
                 console.log(data)
