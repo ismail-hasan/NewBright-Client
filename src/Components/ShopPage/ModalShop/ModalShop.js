@@ -6,11 +6,11 @@ import { authContext } from '../../../ContextProvider/ContextProvider';
 
 const ModalShop = ({ product }) => {
     const { user } = useContext(authContext)
-
-    console.log("bacccccca", product)
     const { productImg, ratingsCount, ratings, stock, authorImg, name, price, dec, category } = product
     const [smallImg, setSmallImg] = useState(authorImg[0])
 
+
+    console.log("df", authorImg[2])
 
 
 
@@ -21,7 +21,6 @@ const ModalShop = ({ product }) => {
         const email = user?.email
         const subTotal = price * productPich
         console.log(subTotal)
-
 
         const cartData = {
             name,
@@ -93,10 +92,10 @@ const ModalShop = ({ product }) => {
                                 <img src={smallImg.img1} alt="mainImg" />
                                 <div className='flex justify-between mt-3 overflow-hidden gap-2'>
                                     {
-                                        authorImg.map((singleImg, idx) => {
+                                        authorImg?.map((singleImg, idx) => {
                                             return (
                                                 <div key={idx}>
-                                                    <img className='w-[120px]' onClick={() => setSmallImg(singleImg)} src={singleImg.img1} alt="images" />
+                                                    <img className='w-[120px]' onClick={() => setSmallImg(singleImg)} src={singleImg?.img1} alt="images" />
                                                 </div>
                                             )
                                         })
@@ -140,7 +139,7 @@ const ModalShop = ({ product }) => {
                                         </Link>
                                     </div>
                                     <h1 className='text-[44px] text-black capitalize font-semibold pt-8'>Prodect Description</h1>
-                                    <p className='text-[17px]'>{dec.length > 100 && dec.slice(0, 300)}</p>
+                                    <p className='text-[17px]'>{dec?.length > 100 && dec.slice(0, 300)}</p>
                                 </form>
                             </div>
                         </div>

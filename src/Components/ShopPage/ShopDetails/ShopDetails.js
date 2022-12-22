@@ -11,7 +11,7 @@ const ShopDetails = () => {
     const { user } = useContext(authContext)
     const detailsData = useLoaderData()
     const { name, dec, price, productImg, stock, ratings, ratingsCount, category, authorImg, _id } = detailsData
-    const [smallImg, setSmallImg] = useState(authorImg[0])
+    const [smallImg, setSmallImg] = useState(authorImg[2])
 
 
     // const { data: detailsDatas = [], refetch } = useQuery({
