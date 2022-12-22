@@ -72,6 +72,9 @@ const NavBar = () => {
                                 <>
                                     <li> <Link to='/wishlist'>WishList</Link> </li>
                                     <li> <Link to='/cart'>Cart</Link> </li>
+                                    <button onClick={handleLogout}>
+                                        <li> <Link to='/cart'>Logout</Link> </li>
+                                    </button>
 
                                 </>
                                 :
@@ -83,9 +86,9 @@ const NavBar = () => {
 
                     </ul>
                 </div>
-                <div className="navbar-end">
+                {/* <div className="navbar-end">
                     <a className="btn">Get started</a>
-                </div>
+                </div> */}
             </div>
         </div >
     );
