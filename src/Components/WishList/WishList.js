@@ -6,9 +6,10 @@ import { AiTwotoneDelete } from 'react-icons/ai';
 import { FaCartArrowDown } from 'react-icons/fa';
 import { Link, } from 'react-router-dom';
 import { authContext } from '../../ContextProvider/ContextProvider';
+import ModalShop from '../ShopPage/ModalShop/ModalShop';
 
 const WishList = () => {
-    const { user } = useContext(authContext)
+    const { user, product, setProduct } = useContext(authContext)
 
     const { data: wishListDatas = [], isLoading, refetch } = useQuery({
         queryKey: [user?.email],
@@ -51,17 +52,18 @@ const WishList = () => {
 
             <div className='grid grid-cols-4 gap-8'>
                 {
-                    wishListDatas.map(productData => {
-                        const { productImg, name, price, seller, _id, mainId } = productData
+                    wishListDatas.map(product => {
+                        const { productImg, mainId, seller, price, name } = product
                         return (
-                            <div key={productData._id}>
+                            <div key={product._id}>
                                 <div className='border border-[#e6e6e6] '>
                                     <div className='text-img'>
                                         <img src={productImg} alt={name} className='w-full' />
                                         <div className='text-overly z-10 flex justify-center items-center flex-col gap-7'>
-                                            <div className='image-icon'>
+
+                                            <label onClick={() => setProduct(product)} className='image-icon' htmlFor="my-modal-3" >
                                                 <AiFillEye className='text-[23px] icon'></AiFillEye>
-                                            </div>
+                                            </label>
 
                                             <div className='image-icon' onClick={() => handleDelete(mainId)}>
                                                 <AiTwotoneDelete className='text-[23px] icon'></AiTwotoneDelete>
@@ -72,9 +74,15 @@ const WishList = () => {
                                                     <AiFillEye className='text-[23px] icon'></AiFillEye>
                                                 </div>
                                             </Link>
-
                                         </div>
+
+                                        {product &&
+                                            <ModalShop product={product}></ModalShop>
+
+                                        }
+
                                     </div>
+                                    {/* <ModalShop></ModalShop> */}
                                     <div className='py-5 px-3'>
                                         <div>
                                             <p>{seller}</p>

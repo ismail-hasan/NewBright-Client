@@ -63,11 +63,11 @@ const Shop = ({ setProduct, product }) => {
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6'>
                 {
                     productDatas.map(productData => {
-                        const { productImg, name, price, seller, _id } = productData
+                        const { productImg, name, price, seller, _id, ratingsCount, ratings, stock, authorImg, dec, category } = productData
                         const handleHeart = () => {
                             const mainId = _id
 
-                            const wishData = { productImg, name, price, seller, email, wishlist, mainId }
+                            const wishData = { productImg, mainId, seller, ratingsCount, ratings, stock, authorImg, name, price, dec, category }
 
                             fetch(`http://localhost:5000/wish`, {
                                 method: "POST",
@@ -83,6 +83,7 @@ const Shop = ({ setProduct, product }) => {
                                         console.log(data)
 
                                     }
+
                                 })
                         }
                         return (
@@ -90,6 +91,7 @@ const Shop = ({ setProduct, product }) => {
                                 <div className='border border-[#e6e6e6] '>
                                     <div className='text-img'>
                                         <img src={productImg} alt={name} className='w-full' />
+
                                         <div className='text-overly z-10 flex justify-center items-center flex-col gap-7'>
                                             <label onClick={() => setProduct(productData)} className='image-icon' htmlFor="my-modal-3" >
                                                 <AiFillEye className='text-[23px] icon'></AiFillEye>

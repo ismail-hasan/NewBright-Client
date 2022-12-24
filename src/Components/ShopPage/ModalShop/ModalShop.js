@@ -139,7 +139,7 @@ const ModalShop = ({ product }) => {
                                         </Link>
                                     </div>
                                     <h1 className='text-[44px] text-black capitalize font-semibold pt-8'>Prodect Description</h1>
-                                    <p className='text-[17px]'>{dec?.length > 100 && dec.slice(0, 300)}</p>
+                                    <p className='text-[17px]'>{dec?.length > 100 ? dec.slice(0, 300) : "hello"}</p>
                                 </form>
                             </div>
                         </div>
