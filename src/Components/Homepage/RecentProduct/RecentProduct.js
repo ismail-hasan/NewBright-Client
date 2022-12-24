@@ -1,66 +1,36 @@
-import React, { useContext, useState } from 'react';
-import { FaCartArrowDown } from 'react-icons/fa';
-import { Link, useLoaderData } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react';
+import { toast } from 'react-hot-toast';
 import { AiFillEye } from 'react-icons/ai';
 import { BsHeartFill } from 'react-icons/bs';
+import { FaCartArrowDown } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+import { authContext } from '../../../ContextProvider/ContextProvider';
+import ModalShop from '../../ShopPage/ModalShop/ModalShop';
 
-import './Shop.css'
-import { authContext } from '../../ContextProvider/ContextProvider';
-import { toast } from 'react-hot-toast';
-import ModalShop from './ModalShop/ModalShop';
-
-
-
-const Shop = ({ setProduct, product }) => {
-    const productDatas = useLoaderData()
-    const { user } = useContext(authContext)
-
-    const email = user?.email
-    const wishlist = true
-
-    const useEmail = {
-        email
-    }
-    console.log(useEmail)
-
-    // const handleHeart = (id) => {
-    //     fetch(`https://bright-ecommerce.vercel.app/wishlists/${id}`, {
-    //         method: "PUT",
-    //         headers: {
-    //             'content-type': 'application/json'
-    //         },
-    //         body: JSON.stringify(useEmail)
-    //     })
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             if (data.acknowledged) {
-    //                 toast.success('WishList item Added')
-    //             }
-    //             else {
-    //                 toast.error('Allready Item Added')
-    //             }
-    //             console.log(data)
-    //         })
-    // }
-    ////////////
-    // const handleWishlist = (id) => {
-    //     fetch(`https://bright-ecommerce.vercel.app/wishlists/${id}`, {
-    //         method: "POST",
-    //         body:
-    //     })
-    //         .then(res => res.json())
-    //         .then(data => console.log(data))
-    // }
+const RecentProduct = () => {
+    const { setProduct, product } = useContext(authContext)
 
 
+    const [recent, setRecent] = useState([])
+    useEffect(() => {
+        fetch("http://localhost:5000/limitproduct")
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                setRecent(data)
+            })
+    }, [])
 
     return (
-        <div>
-            <h1>All  Product Data : {productDatas.length}</h1>
+        <div className='pb-20 px-10 lg:px-20'>
+            <div className='pb-10'>
+                <h1 className='text-5xl text-black font-semibold'>Recent Products</h1>
+                <h1 className='text-[20px]'>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</h1>
+            </div>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6'>
                 {
-                    productDatas.map(productData => {
-                        const { productImg, name, price, seller, _id, ratingsCount, ratings, stock, authorImg, dec, category } = productData
+                    recent.map(product => {
+                        const { productImg, name, price, seller, _id, ratingsCount, ratings, stock, authorImg, dec, category } = product
                         const handleHeart = () => {
                             const mainId = _id
 
@@ -84,13 +54,13 @@ const Shop = ({ setProduct, product }) => {
                                 })
                         }
                         return (
-                            <div key={productData._id}>
+                            <div key={product._id}>
                                 <div className='border border-[#e6e6e6] '>
                                     <div className='text-img'>
                                         <img src={productImg} alt={name} className='w-full' />
 
                                         <div className='text-overly z-10 flex justify-center items-center flex-col gap-7'>
-                                            <label onClick={() => setProduct(productData)} className='image-icon' htmlFor="my-modal-3" >
+                                            <label onClick={() => setProduct(product)} className='image-icon' htmlFor="my-modal-3" >
                                                 <AiFillEye className='text-[23px] icon'></AiFillEye>
                                             </label>
 
@@ -103,9 +73,15 @@ const Shop = ({ setProduct, product }) => {
                                                 </div>
                                             </Link>
                                         </div>
-                                        {/* <ModalShop productData={productData}></ModalShop> */}
+
+
 
                                     </div>
+                                    {product &&
+                                        <ModalShop product={product}></ModalShop>
+
+                                    }
+
 
                                     <div className='py-5 px-3'>
                                         <div>
@@ -125,9 +101,8 @@ const Shop = ({ setProduct, product }) => {
                     })
                 }
             </div>
-
-        </div >
+        </div>
     );
 };
 
-export default Shop;
+export default RecentProduct;
