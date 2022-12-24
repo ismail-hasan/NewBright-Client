@@ -8,7 +8,7 @@ import { authContext } from '../../../ContextProvider/ContextProvider';
 import ModalShop from '../../ShopPage/ModalShop/ModalShop';
 
 const RecentProduct = () => {
-    const { setProduct, product } = useContext(authContext)
+    const { setProduct, product, user } = useContext(authContext)
 
 
     const [recent, setRecent] = useState([])
@@ -20,6 +20,8 @@ const RecentProduct = () => {
                 setRecent(data)
             })
     }, [])
+    const email = user?.email
+    const wishlist = true
 
     return (
         <div className='pb-20 px-10 lg:px-20'>
@@ -34,7 +36,7 @@ const RecentProduct = () => {
                         const handleHeart = () => {
                             const mainId = _id
 
-                            const wishData = { productImg, mainId, seller, ratingsCount, ratings, stock, authorImg, name, price, dec, category }
+                            const wishData = { wishlist, email, productImg, mainId, seller, ratingsCount, ratings, stock, authorImg, name, price, dec, category }
 
                             fetch(`http://localhost:5000/wish`, {
                                 method: "POST",

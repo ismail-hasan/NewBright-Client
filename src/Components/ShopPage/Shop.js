@@ -64,7 +64,7 @@ const Shop = ({ setProduct, product }) => {
                         const handleHeart = () => {
                             const mainId = _id
 
-                            const wishData = { productImg, mainId, seller, ratingsCount, ratings, stock, authorImg, name, price, dec, category }
+                            const wishData = { wishlist, email, productImg, mainId, seller, ratingsCount, ratings, stock, authorImg, name, price, dec, category }
 
                             fetch(`http://localhost:5000/wish`, {
                                 method: "POST",
