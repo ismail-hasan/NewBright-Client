@@ -68,26 +68,33 @@ const NavBar = () => {
                         <li> <Link to='/contact'>Contact</Link> </li>
 
                         {
-                            user?.uid ?
-                                <>
-                                    <li> <Link to='/wishlist'>WishList</Link> </li>
-                                    <li> <Link to='/cart'>Cart</Link> </li>
-                                    <button onClick={handleLogout}>
-                                        <li> <Link to='/cart'>Logout</Link> </li>
-                                    </button>
+                            user?.uid &&
+                            <>
+                                <li> <Link to='/wishlist'>WishList</Link> </li>
+                                <li> <Link to='/cart'>Cart</Link> </li>
 
-                                </>
-                                :
-                                <>
-                                    <li> <Link to='/login'>Login</Link> </li>
-                                    <li> <Link to='/register'>Register</Link> </li>
-                                </>
+                            </>
+
                         }
 
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <a className="btn">Get started</a>
+                    <ul className='menu menu-horizontal px-1'>
+                        {
+
+                            user?.uid ?
+                                <button onClick={handleLogout}>
+                                    <li> <Link to='/cart'>Logout</Link> </li>
+                                </button>
+                                :
+                                <>
+                                    <li> <Link to='/login'>Login</Link> </li>
+                                    <li> <Link to='/register'>Register</Link> </li>
+
+                                </>
+                        }
+                    </ul>
                 </div>
             </div>
         </div >

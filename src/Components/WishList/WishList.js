@@ -76,10 +76,10 @@ const WishList = () => {
                                             </Link>
                                         </div>
 
-                                        {product &&
+                                        {/* {product &&
                                             <ModalShop product={product}></ModalShop>
 
-                                        }
+                                        } */}
 
                                     </div>
                                     {/* <ModalShop></ModalShop> */}
